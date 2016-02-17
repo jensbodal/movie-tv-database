@@ -9,4 +9,7 @@
     chmod 700 .private/config.ini
 ```
 # Restore Database
-    mysql -u [username] -p -D [dbname] < database/all_db_backup.sql
+    mysql --user=[username] --password=[password] --host=oniddb.cws.oregonstate.edu -D [dbname] < all_db_backup.sql
+
+# Backup Database
+    mysqldump --compact --user=[username] --password=[password] --host=oniddb.cws.oregonstate.edu -D [dbname] | sed "/ SET /d" > all_db_backup.sql
