@@ -12,4 +12,4 @@
     mysql --user=[username] --password=[password] --host=oniddb.cws.oregonstate.edu -D [dbname] < all_db_backup.sql
 
 # Backup Database
-    mysqldump --compact --user=[username] --password=[password] --host=oniddb.cws.oregonstate.edu -D [dbname] | sed "/ SET /d" > all_db_backup.sql
+    mysqldump --compact --ad-drop-table --user=[username] --password=[password] --host=oniddb.cws.oregonstate.edu [dbname] | sed "/ SET /d" > all_db_backup.sql
