@@ -20,7 +20,7 @@ if ($conn->connect_error) {
 $sql = "SELECT id, f_name, l_name FROM actor_test";
 $result = $conn->query($sql);
 
-if ($result->num_rows > 0) { 
+if ($result->num_rows > 0): 
     while ($rows[] = mysqli_fetch_assoc($result));
     // last entry is empty so remove it
     array_pop($rows);
@@ -42,11 +42,16 @@ if ($result->num_rows > 0) {
         <td><?=$row['f_name'] . " " . $row['l_name']?></td>
     </tr>
 <?php endforeach; ?>
+
 </table>
+
 <?
-}
-else {
+
+else:
     echo "0 results";
-}
+
+endif;
+
 $conn->close();
+
 ?>
