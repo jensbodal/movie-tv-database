@@ -7,4 +7,4 @@
     chmod 700 .private/config.ini
 ```
 # Restore Database
-    @TODO
+    mysql -u [username] -p -D [dbname] < database/all_db_backup.sql
