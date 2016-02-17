@@ -1,0 +1,2 @@
+First and most important set directory .private to 700
+chmod 700 .private
