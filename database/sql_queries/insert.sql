@@ -194,7 +194,9 @@ INSERT INTO rating (media_id, rating, link) VALUES
 	((SELECT movie.media_id FROM movie INNER JOIN media ON media.id = movie.media_id WHERE (movie.title = "Deadpool")),
 	6.9,
 	"http://www.rottentomatoes.com/m/deadpool/");
-	
+
+-- Right now this poses a problem since if we add another rating for deadpool into rating
+-- it can't be easily queries to link to a rating source
 INSERT INTO rating_source (rating_id, site_id) VALUES
 	((SELECT rating.id FROM rating INNER JOIN media ON media.id = rating.media_id INNER JOIN movie ON movie.media_id = media.id WHERE (movie.title = "Deadpool")),
 	(SELECT site.id FROM site WHERE site.name = "Rotten Tomatoes"));
