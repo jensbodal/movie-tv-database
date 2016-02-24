@@ -186,18 +186,12 @@ INSERT INTO media_director(media_id, director_id) VALUES
 	(SELECT director.id FROM director INNER JOIN person ON director.person_id = person.id WHERE (person.first_name = "Ben" AND person.last_name = "Stiller")));
 	
 -- INSERT site
-INSERT INTO site (name, max_rating) VALUES
-	("IMDB", 10),
-	("Rotten Tomatoes", 10);
+INSERT INTO site (name, site_url, max_rating) VALUES
+	("IMDB", "http://imdb.com", 10),
+	("Rotten Tomatoes", "http://www.rottentomatoes.com", 10);
 	
-INSERT INTO rating (media_id, rating, link) VALUES
+INSERT INTO rating (media_id, site_id, rating, rating_url) VALUES
 	((SELECT movie.media_id FROM movie INNER JOIN media ON media.id = movie.media_id WHERE (movie.title = "Deadpool")),
+        (SELECT site.id FROM site WHERE (site.name = "Rotten Tomatoes")),
 	6.9,
 	"http://www.rottentomatoes.com/m/deadpool/");
-
--- Right now this poses a problem since if we add another rating for deadpool into rating
--- it can't be easily queries to link to a rating source
-INSERT INTO rating_source (rating_id, site_id) VALUES
-	((SELECT rating.id FROM rating INNER JOIN media ON media.id = rating.media_id INNER JOIN movie ON movie.media_id = media.id WHERE (movie.title = "Deadpool")),
-	(SELECT site.id FROM site WHERE site.name = "Rotten Tomatoes"));
-	

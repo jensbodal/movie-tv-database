@@ -1,6 +1,5 @@
-DROP TABLE IF EXISTS rating_source;
-DROP TABLE IF EXISTS site;
 DROP TABLE IF EXISTS rating;
+DROP TABLE IF EXISTS site;
 DROP TABLE IF EXISTS media_director;
 DROP TABLE IF EXISTS media_actor;
 DROP TABLE IF EXISTS director;
@@ -131,28 +130,22 @@ CREATE TABLE media_director (
 	UNIQUE (director_id, media_id)
 ) ENGINE = InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE rating (
-  id INT NOT NULL AUTO_INCREMENT,
-  media_id INT NOT NULL,
-  rating FLOAT NOT NULL,
-  link VARCHAR(512),
-  PRIMARY KEY(id),
-  FOREIGN KEY(media_id) REFERENCES media(id)
-) ENGINE = InnoDB DEFAULT CHARSET=utf8;
-
 CREATE TABLE site (
-  id INT NOT NULL AUTO_INCREMENT,
-  name VARCHAR(255),
-  max_rating FLOAT NOT NULL,
-  PRIMARY KEY(id)
+    id INT NOT NULL AUTO_INCREMENT,
+    name VARCHAR(255) NOT NULL,
+    site_url VARCHAR(512) NOT NULL,
+    max_rating FLOAT NOT NULL,
+    PRIMARY KEY(id)
 ) ENGINE = InnoDB DEFAULT CHARSET=utf8;
 
-CREATE TABLE rating_source (
-  id INT NOT NULL AUTO_INCREMENT,
-  rating_id INT NOT NULL,
-  site_id INT NOT NULL,
-  PRIMARY KEY(id),
-  FOREIGN KEY(rating_id) REFERENCES rating(id),
-  FOREIGN KEY(site_id) REFERENCES site(id),
-  UNIQUE(rating_id, site_id)
+CREATE TABLE rating (
+    id INT NOT NULL AUTO_INCREMENT,
+    media_id INT NOT NULL,
+    site_id INT NOT NULL,
+    rating FLOAT NOT NULL,
+    rating_url VARCHAR(512) NOT NULL,
+    PRIMARY KEY(id),
+    FOREIGN KEY(media_id) REFERENCES media(id),
+    FOREIGN KEY(site_id) REFERENCES site(id),
+    UNIQUE(media_id, site_id)
 ) ENGINE = InnoDB DEFAULT CHARSET=utf8;
