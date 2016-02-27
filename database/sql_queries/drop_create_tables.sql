@@ -135,7 +135,8 @@ CREATE TABLE site (
     name VARCHAR(255) NOT NULL,
     site_url VARCHAR(512) NOT NULL,
     max_rating FLOAT NOT NULL,
-    PRIMARY KEY(id)
+    PRIMARY KEY(id),
+    UNIQUE(name)
 ) ENGINE = InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE rating (

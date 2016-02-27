@@ -17,7 +17,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT id, f_name, l_name FROM actor_test";
+$sql = "SELECT title, release_date, release_country, runtime, content_rating FROM movie ORDER BY title";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0): 
@@ -29,17 +29,19 @@ if ($result->num_rows > 0):
 <table>
     <thead>
         <td>ID</td>
-        <td>First Name</td>
-        <td>Last Name</td>
-        <td>Full Name</td>
+        <td>Movie Title</td>
+        <td>Release Date</td>
+        <td>Runtime</td>
+        <td>Content Rating</td>
     </thead>
 
 <?php foreach($rows as $row): ?>
     <tr>
-        <td><?=$row['id']?></td>
-        <td><?=$row['f_name']?></td>
-        <td><?=$row['l_name']?></td>
-        <td><?=$row['f_name'] . " " . $row['l_name']?></td>
+        <td><?=$row['title']?></td>
+        <td><?=$row['release_date']?></td>
+        <td><?=$row['release_country']?></td>
+        <td><?=$row['runtime']?></td>
+        <td><?=$row['content_rating']?></td>
     </tr>
 <?php endforeach; ?>
 
