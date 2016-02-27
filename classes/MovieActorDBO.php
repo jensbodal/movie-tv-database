@@ -2,11 +2,11 @@
 
 class MovieActorDB {
 
-    private $root_dir = "/nfs/stak/students/b/bodalj/public_html/cs340/movie-tv-database/";
     private $connection;
 
     public function __construct() {
-        $dbconfig = $this->root_dir . ".private/config.ini";
+        $root_dir = dirname(dirname(__FILE__)); 
+        $dbconfig = $root_dir . "/.private/config.ini";
         $read_config = parse_ini_file($dbconfig, true);
 
         $servername = $read_config["database"]["servername"];
@@ -35,6 +35,7 @@ class MovieActorDB {
         
         if ($result) {
             while ($rows[] = mysqli_fetch_assoc($result));
+            // need to remove last item since it's always empty
             array_pop($rows);
         }
         return $rows;

@@ -2,20 +2,18 @@
 
 $title = "Main page";
 include 'includes/header.php';
+include 'classes/MovieActorDBO.php';
 
 // turn on errors
 ini_set('display_errors', 'On');
 
-include 'classes/MovieActorDBO.php';
 $DBO = new MovieActorDB();
 
 $rows = $DBO->query("SELECT title, release_date, release_country, runtime, content_rating FROM movie ORDER BY title");
 
 if (count($rows) > 0):
 ?>
-<head>
-    <title>ASDF</title>
-</head>
+
 <table>
     <thead>
         <td>ID</td>
