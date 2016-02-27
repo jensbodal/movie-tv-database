@@ -1,6 +1,8 @@
 <?php
+// turn on errors
+ini_set('display_errors', 'On');
 
-$root_dir = "/users/u1/b/bodalj/public_html/cs340/movie-tv-database/";
+$root_dir = "/nfs/stak/students/b/bodalj/public_html/cs340/movie-tv-database/";
 $dbconfig = $root_dir . ".private/config.ini";
 $read_config = parse_ini_file($dbconfig, true);
 
@@ -11,16 +13,14 @@ $dbname = $read_config["database"]["dbname"];
 
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
-
 // Check Connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-
 $sql = "SELECT title, release_date, release_country, runtime, content_rating FROM movie ORDER BY title";
 $result = $conn->query($sql);
 
-if ($result->num_rows > 0): 
+if ($result->num_rows > 0):
     while ($rows[] = mysqli_fetch_assoc($result));
     // last entry is empty so remove it
     array_pop($rows);
@@ -47,13 +47,11 @@ if ($result->num_rows > 0):
 
 </table>
 
-<?
+<?php
 
 else:
     echo "0 results";
 
 endif;
-
 $conn->close();
-
 ?>
