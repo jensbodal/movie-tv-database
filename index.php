@@ -43,3 +43,7 @@ else:
 endif;
 
 ?>
+
+  <footer>
+    <a href="home.html">Home</a>
+  </footer>
