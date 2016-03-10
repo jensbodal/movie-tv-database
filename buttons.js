@@ -19,7 +19,6 @@ function addActor() {
         role = roles[i].value;
       }
     }
-    console.log(role);
     // Ensure that all fields hold a value
     if (first_name == "" || last_name == "" || birthday == "") {
       document.getElementById("result").innerHTML = "Cannot submit incomplete data."; 
