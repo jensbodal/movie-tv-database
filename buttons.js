@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', addActor);
 document.addEventListener('DOMContentLoaded', addMovie);
 document.addEventListener('DOMContentLoaded', addTVShow);
 document.addEventListener('DOMContentLoaded', addSite);
+document.addEventListener('DOMContentLoaded', addReviewTitle);
 
 
 function addActor() {
@@ -143,6 +144,33 @@ function addSite() {
     // When the submit button is pressed, send a GET request to update the database
     if (valid == true) {
       request.open('GET', 'addSite.php?site_name=' + site_name + '&url=' + url + "&max=" + max, true);
+      request.send(null);
+    }
+    event.preventDefault();
+  });
+}
+
+function addReviewTitle() {
+  document.getElementById('addReviewTitle').addEventListener('click', function(event) {
+    var request = new XMLHttpRequest();
+    var valid = true;
+    var review_title = document.getElementById('review_title').value;
+
+    // Ensure that all fields hold a value
+    if (review_title == "") {
+      document.getElementById("review_title").innerHTML = "Must enter the title."; 
+      valid = false;
+    }
+
+    request.onreadystatechange = function() {
+      if (request.readyState == 4 && request.status == 200) {
+        //document.getElementById("review_title").innerHTML = site_name + " was added successfully.";
+      }
+    }
+
+    // When the submit button is pressed, send a GET request to update the database
+    if (valid == true) {
+      request.open('GET', 'findReviewTitle.php?review_title=' + review_title, true);
       request.send(null);
     }
     event.preventDefault();
