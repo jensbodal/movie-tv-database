@@ -9,14 +9,7 @@ ini_set('display_errors', 'On');
 
 $DBO = new MovieActorDB();
 
-// $result = $DBO->query("SELECT mov_tv.title, mov_tv.release_country, media.id FROM media
-// INNER JOIN (SELECT title, media_id, release_country FROM (
-  // (SELECT title, media_id, release_country FROM movie)
-  // UNION ALL
-  // (SELECT title, media_id, release_country from tvshow)
- // ) mov_tv
-// ) mov_tv ON mov_tv.media_id = media.id
-// WHERE title = '".$_GET['review_title']."'");
+$title = str_replace("+", " ", $_GET['review_title']);
 
 $rows = $DBO->query("SELECT mov_tv.title, mov_tv.release_country, media.id FROM media
 INNER JOIN (SELECT title, media_id, release_country FROM (
@@ -25,7 +18,8 @@ INNER JOIN (SELECT title, media_id, release_country FROM (
   (SELECT title, media_id, release_country from tvshow)
  ) mov_tv
 ) mov_tv ON mov_tv.media_id = media.id
-WHERE title = 'test'");
+WHERE title = '".$title."'");
+
 
 if (count($rows) > 0):
 
@@ -56,3 +50,6 @@ else:
 endif;
 
 ?>
+  <footer>
+    <a href="add.html">Back</a>
+  </footer>
