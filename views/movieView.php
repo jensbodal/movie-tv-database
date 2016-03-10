@@ -59,8 +59,12 @@ endif;
 </body>
 
 <script>
+$(document).ready(function() {
+    $('#views_btn').addClass('active');
+});
 $('#movieTable tbody tr').hover(function() {
-    $(this).addClass('highlight').siblings().removeClass('highlight');
+    $(this).addClass('active').siblings().removeClass('active');
+    $(this).css('cursor', 'pointer');
 });
 $('#movieTable tbody tr').on('click', function(event) {
     var movie_id = $(this.id);
