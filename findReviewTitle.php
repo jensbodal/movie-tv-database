@@ -27,16 +27,23 @@ if (count($rows) > 0):
 
 <table>
     <thead>
-        <td>ID</td>
         <td>Title</td>
         <td>Release Country</td>
+        <td></td>
     </thead>
 
 <?php foreach($rows as $row): ?>
     <tr>
-        <td><?=$row['id']?></td>
         <td><?=$row['title']?></td>
         <td><?=$row['release_country']?></td>
+        <td>
+          <form method="get" id="review" action="writeReview.php">
+            <fieldset>
+              <input type="hidden" name="titleId" id ="titleId" value="<?=$row['id']?>">
+              <input type="submit" id="review" value="Review">
+            </fieldset>
+          </form>
+        </td>
     </tr>
 <?php endforeach; ?>
 
