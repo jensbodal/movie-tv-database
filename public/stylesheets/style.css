@@ -2,3 +2,8 @@
     font-size: 20px;
     font-weight: bold;
 }
+
+.highlight {
+    background-color: #c3effd;
+    font-color: #000;
+}
