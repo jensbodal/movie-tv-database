@@ -49,10 +49,15 @@ $home_dir = $root_dir . '/';
                 <li class="active"><a href=<?=$home_dir?>>Home</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Views <span class="caret"></span></a> 
-                <ul class="dropdown-menu" role="menu">
-                <li><a href=<?=$root_dir."/views/movieView"?>>Movies</a></li>
-                <li><a href=<?=$root_dir."/views/tvshowView"?>>TV Shows</a></li>
-                </ul>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href=<?=$root_dir."/views/movieView"?>>Movies</a></li>
+                        <li><a href=<?=$root_dir."/views/tvshowView"?>>TV Shows</a></li>
+                        <li><a href=<?=$root_dir."/views/actorView"?>>Actors</a></li>
+                        <li><a href=<?=$root_dir."/views/directorView"?>>Directors</a></li>
+                        <li><a href=<?=$root_dir."/views/personView"?>>People</a></li>
+                    </ul>
+                </li>
+                <li><a href=<?=$home_dir.'add.html'?>>Add</a></li>
             </ul>
         </div>
     </div>

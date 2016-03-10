@@ -4,9 +4,10 @@ include 'includes/header.php';
 ?>
 
   <body>
-    <h3> Welcome! What would you like to do? </h3>
-    <a href="views">Browse</a>
-    <a href="add.html">Add Data</a>
-
+<div class="container theme-showcase" role="main">
+    <div id="blockContent" class="page-header">
+        <h3> Welcome! What would you like to do? </h3>
+    </div>
+</div>
   </body>
 </html>
