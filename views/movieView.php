@@ -1,8 +1,8 @@
 <?php
 
-$title = "Main page";
-include 'includes/header.php';
-include 'classes/MovieActorDBO.php';
+$title = "Movies";
+include '../includes/header.php';
+include '../classes/MovieActorDBO.php';
 
 // turn on errors
 ini_set('display_errors', 'On');
@@ -14,7 +14,9 @@ $rows = $DBO->query("SELECT title, release_date, release_country, runtime, conte
 if (count($rows) > 0):
 ?>
 
+<div id="movieTable" class="viewTable">
 <table>
+    <caption>Movies</caption>
     <thead>
         <td>ID</td>
         <td>Movie Title</td>
@@ -34,6 +36,7 @@ if (count($rows) > 0):
 <?php endforeach; ?>
 
 </table>
+</div>
 
 <?php
 
@@ -42,8 +45,5 @@ else:
 
 endif;
 
+include 'footer.html';
 ?>
-
-  <footer>
-    <a href="home.html">Home</a>
-  </footer>
