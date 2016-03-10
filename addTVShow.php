@@ -7,15 +7,13 @@ include 'classes/MovieActorDBO.php';
 // turn on errors
 ini_set('display_errors', 'On');
 
-
 $DBO = new MovieActorDB();
 
 $DBO->query("START TRANSACTION");
 $DBO->query("INSERT INTO media (id) VALUES (null)");
 
-if 
 $DBO->query("INSERT INTO tvshow (title, media_id, start_year, end_year, release_country, content_rating)
-	VALUES ('".$_GET['title']."', LAST_INSERT_ID(), '".$_GET['start_date']."', '".$_GET['end_date']."', '".$_GET['country']."', '".$_GET['rating']."')");
+	VALUES ('".$_GET['title']."', LAST_INSERT_ID(), ".$_GET['start_year'].", ".$_GET['end_year'].", '".$_GET['country']."', '".$_GET['rating']."')");
 $DBO->query("COMMIT");
 
 $result = $DBO->query(

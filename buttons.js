@@ -97,7 +97,7 @@ function addTVShow() {
         rating = ratings[i].value;
       }
     }    
-    
+
     // Ensure that all fields hold a value
     if (title == "" || start_year == "" || country == "" || run_time == "") {
       document.getElementById("result").innerHTML = "Cannot submit incomplete data."; 
