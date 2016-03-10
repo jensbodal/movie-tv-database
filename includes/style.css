@@ -1,0 +1,15 @@
+.table {
+    display:table;
+}
+
+.tableHeader {
+    display:table-row;
+}
+
+.tableCell {
+    display:table-row;
+}
+
+#viewFooter {
+    font-weight: bold;
+}
