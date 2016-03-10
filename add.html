@@ -91,7 +91,7 @@
       <fieldset>
         <legend>Rating Site</legend>
         <label for="name">Site Name:</label>
-        <input type="name" name="name" id="site_name">
+        <input type="text" name="name" id="site_name">
         
         <label for="URL">URL:</label>
         <input type="text" name="URL" id="URL">
@@ -100,6 +100,15 @@
         <input type="number" name="max" id="max">
 
         <input type="submit" id="newSite">
+      </fieldset>
+    </form> 
+    
+    <form method="get" id="gettitle" action="findReviewTitle.php">
+      <fieldset>
+        <legend>Add Review</legend>
+        <label for="review_title">Title of Movie / TV Show:</label>
+        <input type="text" name="review_title" id="review_title">
+        <input type="submit" id="addReviewTitle">
       </fieldset>
     </form> 
     
