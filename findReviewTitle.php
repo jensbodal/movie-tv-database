@@ -9,46 +9,50 @@ ini_set('display_errors', 'On');
 
 $DBO = new MovieActorDB();
 
-$result = $DBO->query("SELECT mov_tv.title, mov_tv.release_country, media.id FROM media
+// $result = $DBO->query("SELECT mov_tv.title, mov_tv.release_country, media.id FROM media
+// INNER JOIN (SELECT title, media_id, release_country FROM (
+  // (SELECT title, media_id, release_country FROM movie)
+  // UNION ALL
+  // (SELECT title, media_id, release_country from tvshow)
+ // ) mov_tv
+// ) mov_tv ON mov_tv.media_id = media.id
+// WHERE title = '".$_GET['review_title']."'");
+
+$rows = $DBO->query("SELECT mov_tv.title, mov_tv.release_country, media.id FROM media
 INNER JOIN (SELECT title, media_id, release_country FROM (
   (SELECT title, media_id, release_country FROM movie)
   UNION ALL
   (SELECT title, media_id, release_country from tvshow)
  ) mov_tv
 ) mov_tv ON mov_tv.media_id = media.id
-WHERE title = '".$_GET['review_title']."'");
+WHERE title = 'test'");
 
-
-if (!$result) {
-  die('Could not query:' . mysql_error());
-}
-
-echo mysql_result($result, 2);
+if (count($rows) > 0):
 
 ?>
 
-// <table>
-    // <thead>
-        // <td>ID</td>
-        // <td>Title</td>
-        // <td>Release Country</td>
-    // </thead>
+<table>
+    <thead>
+        <td>ID</td>
+        <td>Title</td>
+        <td>Release Country</td>
+    </thead>
 
-// <?php foreach($rows as $row): ?>
-    // <tr>
-        // <td><?=$row['mov_tv.title']?></td>
-        // <td><?=$row['mov_tv.release_country']?></td>
-        // <td><?=$row['media.id']?></td>
-    // </tr>
-// <?php endforeach; ?>
+<?php foreach($rows as $row): ?>
+    <tr>
+        <td><?=$row['id']?></td>
+        <td><?=$row['title']?></td>
+        <td><?=$row['release_country']?></td>
+    </tr>
+<?php endforeach; ?>
 
-// </table>
+</table>
 
-// <?php
+<?php
 
-// else:
-    // echo "0 results";
+else:
+    echo "0 results";
 
-// endif;
+endif;
 
 ?>
