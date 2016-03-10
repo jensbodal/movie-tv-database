@@ -22,7 +22,7 @@ if (count($rows) > 0):
 <div class="container theme-showcase" role="main">
     <div id="blockContent" class="page-header">
         <table id="movieTable" class="table table-bordered">
-            <caption>Movies</caption>
+            <caption id="tableCaption">Movies</caption>
             <thead>
                 <td>Movie Title</td>
                 <td>Release Date</td>
@@ -69,6 +69,9 @@ $('#movieTable tbody tr').on('click', function(event) {
         console.log(status);
         console.log(xhr);
     });
+});
+$('#tableCaption').on('click', function(event) {
+    location.reload();
 });
 //.on('hover', function(event) {
 //    $(this).addClass('highlight').siblings().removeClass('highlight');
