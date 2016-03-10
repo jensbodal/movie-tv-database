@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang='en'>
 <?php
 
 $title = "Movies";
@@ -49,14 +51,14 @@ if (count($rows) > 0):
           <div id='pleaseWork'></div>
       </div>
   </div>
-<?php
+  <?php
 
-else:
-    echo "0 results";
+  else:
+      echo "0 results";
+  endif;
+  ?>
 
-endif;
-?>
-
+  <script src='handlers/tableHandler.js' type='text/javascript'></script>
 </body>
 
-<script src='handlers/tableHandler.js' type='text/javascript'></script>
+</html>

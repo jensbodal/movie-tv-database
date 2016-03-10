@@ -12,8 +12,6 @@ $js_dir = $root_dir . '/public/javascripts/htmlTagHandler.js';
 $home_dir = $root_dir . '/';
 
 ?>
-<!doctype html>
-<html lang="en">
 <head>
     <title><?php echo $title ?></title>
     <meta charset="UTF-8" />

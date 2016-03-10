@@ -28,7 +28,7 @@ $home_dir = $root_dir . '/';
                         <li><a href=<?=$root_dir."/views/personView"?>>People</a></li>
                     </ul>
                 </li>
-                <li id='add_btn'><a href=<?=$home_dir.'adds/add.html'?>>Add</a></li>
+                <li id='add_btn'><a href=<?=$root_dir."/adds/add"?>>Add</a></li>
             </ul>
         </div>
     </div>

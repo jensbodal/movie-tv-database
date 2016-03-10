@@ -1,8 +1,8 @@
 <?php
 
 $title = "Add TV Show";
-include 'includes/header.php';
-include 'classes/MovieActorDBO.php';
+include '../includes/header.php';
+include '../classes/MovieActorDBO.php';
 
 // turn on errors
 ini_set('display_errors', 'On');

@@ -1,8 +1,8 @@
 <?php
 
 $title = "Find Review Title";
-include 'includes/header.php';
-include 'classes/MovieActorDBO.php';
+include '../includes/header.php';
+include '../classes/MovieActorDBO.php';
 
 // turn on errors
 ini_set('display_errors', 'On');
@@ -57,6 +57,3 @@ else:
 endif;
 
 ?>
-  <footer>
-    <a href="add.html">Back</a>
-  </footer>
