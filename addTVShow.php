@@ -10,14 +10,13 @@ ini_set('display_errors', 'On');
 
 $DBO = new MovieActorDB();
 
-$result = $DBO->query(
-"START TRANSACTION;
-INSERT INTO media (id) 
-	VALUES (null);
-INSERT INTO tvshow (title, media_id, start_year, release_country, content_rating)
-	VALUES ('".$_GET['title']."', LAST_INSERT_ID(), '".$_GET['start_date']."', '".$_GET['end_date']."', '".$_GET['country']."', '".$_GET['rating']."');
-COMMIT;"
-);
+$DBO->query("START TRANSACTION");
+$DBO->query("INSERT INTO media (id) VALUES (null)");
+
+if 
+$DBO->query("INSERT INTO tvshow (title, media_id, start_year, end_year, release_country, content_rating)
+	VALUES ('".$_GET['title']."', LAST_INSERT_ID(), '".$_GET['start_date']."', '".$_GET['end_date']."', '".$_GET['country']."', '".$_GET['rating']."')");
+$DBO->query("COMMIT");
 
 $result = $DBO->query(
 "INSERT INTO tvshow_genre (tvshow_id, genre_id) VALUES	

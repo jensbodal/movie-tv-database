@@ -11,7 +11,15 @@ function addActor() {
     var first_name = document.getElementById('first_name').value;
     var last_name = document.getElementById('last_name').value;
     var birthday = document.getElementById('birthday').value;
-    var role = document.getElementById('role').value;
+    
+    var roles = document.getElementsByName('role');
+    var role;
+    for (var i = 0; i < roles.length; i++) {
+      if (roles[i].checked) {
+        role = roles[i].value;
+      }
+    }
+    console.log(role);
     // Ensure that all fields hold a value
     if (first_name == "" || last_name == "" || birthday == "") {
       document.getElementById("result").innerHTML = "Cannot submit incomplete data."; 
@@ -21,9 +29,6 @@ function addActor() {
     request.onreadystatechange = function() {
       if (request.readyState == 4 && request.status == 200) {
         document.getElementById("result").innerHTML = first_name + " " + last_name + " was added succesfully.";
-      }
-      else {
-        console.log("Error adding Person");
       }
     }
     // When the submit button is pressed, send a GET request to update the database
@@ -44,10 +49,17 @@ function addMovie() {
     var country = document.getElementById('m_country').value;
     var run_time = document.getElementById('m_run_time').value;
     var genre = document.getElementById('m_genre').value;
-    var rating = document.getElementById('m_rating').value;
+    
+    var ratings = document.getElementsByName('m_rating');
+    var rating;
+    for (var i = 0; i < ratings.length; i++) {
+      if (ratings[i].checked) {
+        rating = ratings[i].value;
+      }
+    }
     
     // Ensure that all fields hold a value
-    if (title == "" || release_date == "" || country == "" || run_time == "" || genre == "") {
+    if (title == "" || release_date == "" || country == "" || run_time == "") {
       document.getElementById("result").innerHTML = "Cannot submit incomplete data."; 
       valid = false;
     }
@@ -55,9 +67,6 @@ function addMovie() {
     request.onreadystatechange = function() {
       if (request.readyState == 4 && request.status == 200) {
         document.getElementById("result").innerHTML = title + " was added successfully.";
-      }
-      else {
-        console.log("Error adding Movie");
       }
     }
 
@@ -81,9 +90,17 @@ function addTVShow() {
     var country = document.getElementById('country').value;
     var run_time = document.getElementById('run_time').value;
     var genre = document.getElementById('genre').value;
-    var rating = document.getElementById('rating').value;
+
+    var ratings = document.getElementsByName('rating');
+    var rating;
+    for (var i = 0; i < ratings.length; i++) {
+      if (ratings[i].checked) {
+        rating = ratings[i].value;
+      }
+    }    
+    
     // Ensure that all fields hold a value
-    if (title == "" || start_year == "" || country == "" || run_time == "" || genre == "") {
+    if (title == "" || start_year == "" || country == "" || run_time == "") {
       document.getElementById("result").innerHTML = "Cannot submit incomplete data."; 
       valid = false;
     }
@@ -91,9 +108,6 @@ function addTVShow() {
     request.onreadystatechange = function() {
       if (request.readyState == 4 && request.status == 200) {
         document.getElementById("result").innerHTML = title + " was added successfully.";
-      }
-      else {
-        console.log("Error adding TV Show");
       }
     }
 
@@ -124,9 +138,6 @@ function addSite() {
     request.onreadystatechange = function() {
       if (request.readyState == 4 && request.status == 200) {
         document.getElementById("result").innerHTML = site_name + " was added successfully.";
-      }
-      else {
-        console.log("Error adding TV Show");
       }
     }
 
