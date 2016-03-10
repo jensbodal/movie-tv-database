@@ -1,6 +1,6 @@
 <?php
 
-include '../classes/MovieActorDBO.php';
+include '../../classes/MovieActorDBO.php';
 $movie_id = $_POST['id'];
 // turn on errors
 ini_set('display_errors', 'On');
@@ -47,10 +47,6 @@ endif;
 ?>
 
 <script>
-$('#tableCaption').on('click', function(event) {
-    location.reload();
-});
-
 $('#reloadMovies').on('click', function(event) {
     location.reload();
 });

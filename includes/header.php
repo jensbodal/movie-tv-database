@@ -1,4 +1,3 @@
-
 <?php
 if (empty($title)) {
     $title = "Actor/Movie Database";
@@ -20,14 +19,14 @@ $home_dir = $root_dir . '/';
     <meta charset="UTF-8" />
     
     <!-- *********************************   CSS   ********************************* -->
-    <!-- Our stylesheet -->
-    <link rel="stylesheet" href=<?=$css_dir?> type="text/css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css">
     <!-- Bootstrap Theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" type="text/css">
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Our stylesheet -->
+    <link rel="stylesheet" href=<?=$css_dir?> type="text/css">
 
     <!-- ********************************* SCRIPTS ********************************* -->
     <!-- Our layout handler -->
@@ -37,32 +36,3 @@ $home_dir = $root_dir . '/';
     <!-- Bootstrap -->
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
-<body>
-
-<nav class="navbar navbar-inverse navbar-static-top">
-    <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href=<?=$home_dir?>>Movie/Actor DB</a>
-        </div>
-        <div id="navbar">
-            <ul class="nav navbar-nav">
-                <li id='home_btn'><a href=<?=$home_dir?>>Home</a></li>
-                <li id='view_btn'class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Views <span class="caret"></span></a> 
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href=<?=$root_dir."/views/movieView"?>>Movies</a></li>
-                        <li><a href=<?=$root_dir."/views/tvshowView"?>>TV Shows</a></li>
-                        <li><a href=<?=$root_dir."/views/actorView"?>>Actors</a></li>
-                        <li><a href=<?=$root_dir."/views/directorView"?>>Directors</a></li>
-                        <li><a href=<?=$root_dir."/views/personView"?>>People</a></li>
-                    </ul>
-                </li>
-                <li id='add_btn'><a href=<?=$home_dir.'add.html'?>>Add</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-<script>
-$(document.body).append('</html>');
-</script>

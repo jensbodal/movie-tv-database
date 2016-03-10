@@ -1,4 +1,3 @@
-<html lang="en">
 <?php
 
 $title = "Movies";
@@ -19,35 +18,37 @@ $rows = $DBO->query("
 
 if (count($rows) > 0):
 ?>
-<div class="container theme-showcase" role="main">
-    <div id="blockContent" class="page-header">
-        <table id="movieTable" class="table table-bordered">
-            <caption id="tableCaption">Movies</caption>
-            <thead>
-                <td>Movie Title</td>
-                <td>Release Date</td>
-                <td>Release Country</td>
-                <td>Runtime</td>
-                <td>Content Rating</td>
-                <td>Genre(s)</td>
-            </thead>
+<body>
+  <?php include '../includes/navigation.php' ?>;
+  <div class="container theme-showcase" role="main">
+      <div id="blockContent" class="page-header">
+          <table id="mainTable" class="table table-bordered">
+              <caption id="tableCaption">Movies</caption>
+              <thead>
+                  <td>Movie Title</td>
+                  <td>Release Date</td>
+                  <td>Release Country</td>
+                  <td>Runtime</td>
+                  <td>Content Rating</td>
+                  <td>Genre(s)</td>
+              </thead>
 
-        <?php foreach($rows as $row): ?>
-            <tr id=<?=$row['movie_id']?>>
-                <td><?=$row['title']?></td>
-                <td><?=$row['release_date']?></td>
-                <td><?=$row['release_country']?></td>
-                <td><?=$row['runtime']?></td>
-                <td><?=$row['content_rating']?></td>
-                <td><?=$row['genre_type']?></td>
-            </tr>
-        <?php endforeach; ?>
+          <?php foreach($rows as $row): ?>
+              <tr id='movieItem-<?=$row['movie_id']?>'>
+                  <td><?=$row['title']?></td>
+                  <td><?=$row['release_date']?></td>
+                  <td><?=$row['release_country']?></td>
+                  <td><?=$row['runtime']?></td>
+                  <td><?=$row['content_rating']?></td>
+                  <td><?=$row['genre_type']?></td>
+              </tr>
+          <?php endforeach; ?>
 
-        </table>
-        
-        <div id='pleaseWork'></div>
-    </div>
-</div>
+          </table>
+          
+          <div id='pleaseWork'></div>
+      </div>
+  </div>
 <?php
 
 else:
@@ -58,26 +59,4 @@ endif;
 
 </body>
 
-<script>
-$(document).ready(function() {
-    $('#views_btn').addClass('active');
-});
-$('#movieTable tbody tr').hover(function() {
-    $(this).addClass('active').siblings().removeClass('active');
-    $(this).css('cursor', 'pointer');
-});
-$('#movieTable tbody tr').on('click', function(event) {
-    var movie_id = $(this.id);
-    $.post("movieItemView", {id:(this.id)}, function(data, status, xhr) {
-        $('.page-header').html(data);
-        console.log(status);
-        console.log(xhr);
-    });
-});
-$('#tableCaption').on('click', function(event) {
-    location.reload();
-});
-//.on('hover', function(event) {
-//    $(this).addClass('highlight').siblings().removeClass('highlight');
-//});
-</script>
+<script src='handlers/tableHandler.js' type='text/javascript'></script>
