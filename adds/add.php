@@ -10,8 +10,14 @@
     SELECT movie.title AS title FROM movie
     UNION ALL
     SELECT tvshow.title AS title FROM tvshow
-    ORDER BY title
+    ORDER BY title ASC
     ");
+
+  $genresJSON = $DBO->queryJSON("
+    SELECT genre.genre_type AS genre FROM genre
+      ORDER BY genre ASC
+      ");
+
 ?>
   <body>
   <?php include '../includes/navigation.php'; ?>
@@ -45,13 +51,13 @@
           <input type="date" name="release_date" id="m_release_date">
           
           <label for="country">Country:</label>
-          <input type="text" name="country" id="m_country">
+          <select name="movie_country_list" id="m_country">
 
           <label for="run_time">Run Time:</label>
           <input type="number" name="run_time" id="m_run_time">
           
           <label for="genre">Genre:</label>
-          <input type="text" name="genre" id="m_genre">
+          <select name="movie_genre_list" id="m_genre" />
 
           <input type="radio" name="m_rating" id="m_rating" value="G"/>G
           <input type="radio" name="m_rating" id="m_rating" value="PG"/>PG     
@@ -76,13 +82,13 @@
           <input type="number" name="end_year" id="end_year">
           
           <label for="country">Country:</label>
-          <input type="text" name="country" id="country">
+          <select name="tvshow_country_list" id="country">
 
           <label for="run_time">Run Time:</label>
           <input type="number" name="run_time" id="run_time">
    
           <label for="genre">Genre:</label>
-          <input type="text" name="genre" id="genre">
+          <select name="tvshow_genre_list" id="genre" />
 
           <input type="radio" name="rating" id="rating" value="TV-Y"/>TV Y
           <input type="radio" name="rating" id="rating" value="TV-Y7"/>TV Y7     
@@ -117,27 +123,21 @@
         <fieldset>
           <legend>Add Review</legend>
           <label for="review_title">Title of Movie / TV Show:</label>
-          <select name="review_title" id="review_list">
-          </select>
+          <select name="review_title" id="review_list" />
           <input type="submit" id="addReviewTitle">
         </fieldset>
       </form> 
       <p id="result"><p>
   </div>
 </div>
-  </body>
   <script src='buttons.js'></script>
-
   <script>
-  // testing with inline for now
-  // add list items to review
-  var titles = <?php echo $movieShowJSON ?>;
-  console.log(JSON.stringify(titles, null, 2));
-  var options = $('#review_list');  
-  $.each(titles, function() {
-    options.append($("<option />").val(this.title).text(this.title));
-  });
+    // export PHP vars
+    var titles = <?= $movieShowJSON ?>;
+    var genres = <?= $genresJSON ?>;
   </script>
+  <script src='handlers/addHandler.js' type='text/javascript'></script>
+  </body>
 </html>
 
 
