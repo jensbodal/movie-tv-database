@@ -6,7 +6,8 @@ if (empty($title)) {
 $root_dir = dirname(dirname(__FILE__));
 $pattern = '/\/nfs.*public_html(.*)/';
 preg_match($pattern, $root_dir, $matches);
-$root_dir = $matches[1];
+$user = get_current_user();
+$root_dir = '/~'.$user.$matches[1];
 $home_dir = $root_dir . '/';
 
 ?>
