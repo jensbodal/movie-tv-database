@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang='en'>
 <?php
 
 $title = "Directors";
@@ -13,26 +15,29 @@ $rows = $DBO->query("SELECT first_name, last_name, birthdate FROM person INNER J
 
 if (count($rows) > 0):
 ?>
+<body>
+  <?php include '../includes/navigation.php' ?>;
+  <div class="container theme-showcase" role="main">
+    <div id="blockContent" class="page-header">
+      <table id="mainTable" class="table table-bordered">
+        <caption>Directors</caption>
+        <thead>
+          <td>First Name</td>
+          <td>Last Name</td>
+          <td>Born</td>
+        </thead>
 
-<div id="actorTable" class="viewTable">
-<table>
-    <caption>Directors</caption>
-    <thead>
-        <td>First Name</td>
-        <td>Last Name</td>
-        <td>Born</td>
-    </thead>
+      <?php foreach($rows as $row): ?>
+        <tr>
+          <td><?=$row['first_name']?></td>
+          <td><?=$row['last_name']?></td>
+          <td><?=$row['birthdate']?></td>
+          </tr>
+      <?php endforeach; ?>
 
-<?php foreach($rows as $row): ?>
-    <tr>
-        <td><?=$row['first_name']?></td>
-        <td><?=$row['last_name']?></td>
-        <td><?=$row['birthdate']?></td>
-    </tr>
-<?php endforeach; ?>
-
-</table>
-</div>
+      </table>
+    </div>
+  </div>
 
 <?php
 
@@ -40,6 +45,7 @@ else:
     echo "0 results";
 
 endif;
-
-include 'footer.html';
 ?>
+  <script src='handlers/tableHandler.js' type='text/javascript'></script>
+</body>
+</html>

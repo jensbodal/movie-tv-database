@@ -23,33 +23,31 @@ if (count($rows) > 0):
 <body>
   <?php include '../includes/navigation.php' ?>;
   <div class="container theme-showcase" role="main">
-      <div id="blockContent" class="page-header">
-          <table id="mainTable" class="table table-bordered">
-              <caption id="tableCaption">Movies</caption>
-              <thead>
-                  <td>Movie Title</td>
-                  <td>Release Date</td>
-                  <td>Release Country</td>
-                  <td>Runtime</td>
-                  <td>Content Rating</td>
-                  <td>Genre(s)</td>
-              </thead>
+    <div id="blockContent" class="page-header">
+      <table id="mainTable" class="table table-bordered">
+        <caption id="tableCaption">Movies</caption>
+          <thead>
+            <td>Movie Title</td>
+            <td>Release Date</td>
+            <td>Release Country</td>
+            <td>Runtime</td>
+            <td>Content Rating</td>
+            <td>Genre(s)</td>
+        </thead>
 
-          <?php foreach($rows as $row): ?>
-              <tr id='movieItem-<?=$row['movie_id']?>'>
-                  <td><?=$row['title']?></td>
-                  <td><?=$row['release_date']?></td>
-                  <td><?=$row['release_country']?></td>
-                  <td><?=$row['runtime']?></td>
-                  <td><?=$row['content_rating']?></td>
-                  <td><?=$row['genre_type']?></td>
-              </tr>
-          <?php endforeach; ?>
+    <?php foreach($rows as $row): ?>
+        <tr id='movieItem-<?=$row['movie_id']?>'>
+          <td><?=$row['title']?></td>
+          <td><?=$row['release_date']?></td>
+          <td><?=$row['release_country']?></td>
+          <td><?=$row['runtime']?></td>
+          <td><?=$row['content_rating']?></td>
+          <td><?=$row['genre_type']?></td>
+        </tr>
+    <?php endforeach; ?>
 
-          </table>
-          
-          <div id='pleaseWork'></div>
-      </div>
+      </table>
+    </div>
   </div>
   <?php
 
