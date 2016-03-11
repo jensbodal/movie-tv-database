@@ -28,7 +28,10 @@ class MovieActorDB {
     public function __destruct() {
         $this->connection->close();
     }
-
+    
+    /**
+      * Returns an array of the query results
+      */
     function query($query) {
         $result = $this->connection->query($query);
         $rows = array();
@@ -39,6 +42,13 @@ class MovieActorDB {
             array_pop($rows);
         }
         return $rows;
+    }
+    
+    /**
+      * Returns a JSON encoded result from the SQL query
+      */
+    function queryJSON($query) {
+      return json_encode($this->query($query));
     }
 }
 

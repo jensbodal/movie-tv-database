@@ -1,13 +1,21 @@
 <?php
 
 include '../../classes/MovieActorDBO.php';
-$movie_id = $_POST['id'];
+$isGET = FALSE;
+if (isset($_GET['id'])) {
+  $isGET = TRUE;
+  include '../../includes/header.php';
+  $movie_id = $_GET['id'];
+}
+else {
+  $movie_id = $_POST['id'];
+}
 // turn on errors
 ini_set('display_errors', 'On');
 
 $DBO = new MovieActorDB();
 
-$rows = $DBO->query("
+$ourQuery = "
     SELECT movie.title AS t, person.first_name AS fn, person.last_name AS ln FROM movie 
         INNER JOIN media ON media.id=movie.media_id
         INNER JOIN media_actor ON media_actor.media_id = media.id
@@ -15,7 +23,17 @@ $rows = $DBO->query("
         INNER JOIN person ON person.id = actor.person_id    
         
         WHERE movie.id=".$movie_id." ORDER BY title
-    ");
+    ";
+
+$rows = $DBO->query($ourQuery);
+$testjson = $DBO->queryJSON($ourQuery);
+if ($isGET) {
+  echo "<body>";
+  print $testjson;
+  include '../../includes/navigation.php';
+  echo '<div class="container theme-showcase" role="main">';
+  echo '<div id="blockContent" class="page-header">';
+}
 
 if (count($rows) > 0):
 ?>
@@ -44,7 +62,16 @@ else:
     echo "0 results";
 
 endif;
+
+if ($isGET) {
+  echo "</div>";
+  echo "</div>";
+  echo "</body>";
+}
+
 ?>
+
+
 
 <script>
 $('#reloadMovies').on('click', function(event) {
