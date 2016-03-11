@@ -1,7 +1,3 @@
-.container {
-  width: 90%;
-}
-
 .highlight {
     background-color: #c3effd;
     font-color: #000;
@@ -9,4 +5,8 @@
 
 .addForms {
   font-size: 12px;
+}
+
+#addContainer {
+  width: 90%;
 }

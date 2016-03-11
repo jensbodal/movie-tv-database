@@ -15,8 +15,8 @@
 ?>
   <body>
   <?php include '../includes/navigation.php'; ?>
-  <div class="container theme-showcase" role="main">
-    <div id="blockContent" class="page-header addForms">
+  <div id="addContainer" class="container theme-showcase addForms" role="main">
+    <div id="blockContent" class="page-header">
       <form>
         <fieldset>
           <legend>Person</legend>
@@ -112,7 +112,7 @@
           <input type="submit" id="newSite">
         </fieldset>
       </form> 
-      
+    
       <form method="get" id="gettitle" action="findReviewTitle.php">
         <fieldset>
           <legend>Add Review</legend>
@@ -130,6 +130,7 @@
 
   <script>
   // testing with inline for now
+  // add list items to review
   var titles = <?php echo $movieShowJSON ?>;
   console.log(JSON.stringify(titles, null, 2));
   var options = $('#review_list');  

@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="en">
 <?php
 
 $title = "Find Review Title";
@@ -24,16 +26,19 @@ WHERE title = '".$title."'");
 if (count($rows) > 0):
 
 ?>
-
-<table>
-    <thead>
+<body>
+<?php include '../includes/navigation.php'; ?>
+<div class="container theme-showcase" role="main">
+  <div id="blockContent" class="page-header">
+    <table id="findReviewTable" class="table table-bordered">
+      <thead>
         <td>Title</td>
         <td>Release Country</td>
-        <td></td>
-    </thead>
+        <td>Leave Review</td>
+      </thead>
 
-<?php foreach($rows as $row): ?>
-    <tr>
+  <?php foreach($rows as $row): ?>
+      <tr>
         <td><?=$row['title']?></td>
         <td><?=$row['release_country']?></td>
         <td>
@@ -44,10 +49,12 @@ if (count($rows) > 0):
             </fieldset>
           </form>
         </td>
-    </tr>
-<?php endforeach; ?>
+      </tr>
+  <?php endforeach; ?>
 
-</table>
+    </table>
+  </div>
+</div>
 
 <?php
 
@@ -55,5 +62,7 @@ else:
     echo "0 results";
 
 endif;
-
 ?>
+
+</body>
+</html>
