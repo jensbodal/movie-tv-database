@@ -51,13 +51,13 @@
           <input type="date" name="release_date" id="m_release_date">
           
           <label for="country">Country:</label>
-          <select name="movie_country_list" id="m_country">
+          <select name="movie_country_list" id="m_country"></select>
 
           <label for="run_time">Run Time:</label>
           <input type="number" name="run_time" id="m_run_time">
           
           <label for="genre">Genre:</label>
-          <select name="movie_genre_list" id="m_genre" />
+          <select name="movie_genre_list" id="m_genre"></select>
 
           <input type="radio" name="m_rating" id="m_rating" value="G"/>G
           <input type="radio" name="m_rating" id="m_rating" value="PG"/>PG     
@@ -82,13 +82,13 @@
           <input type="number" name="end_year" id="end_year">
           
           <label for="country">Country:</label>
-          <select name="tvshow_country_list" id="country">
+          <select name="tvshow_country_list" id="country"></select>
 
           <label for="run_time">Run Time:</label>
           <input type="number" name="run_time" id="run_time">
    
           <label for="genre">Genre:</label>
-          <select name="tvshow_genre_list" id="genre" />
+          <select name="tvshow_genre_list" id="genre"></select>
 
           <input type="radio" name="rating" id="rating" value="TV-Y"/>TV Y
           <input type="radio" name="rating" id="rating" value="TV-Y7"/>TV Y7     
@@ -123,7 +123,7 @@
         <fieldset>
           <legend>Add Review</legend>
           <label for="review_title">Title of Movie / TV Show:</label>
-          <select name="review_title" id="review_list" />
+          <select name="review_title" id="review_list"></select>
           <input type="submit" id="addReviewTitle">
         </fieldset>
       </form> 
