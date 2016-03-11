@@ -3,6 +3,15 @@
 <?php
   $title = "Add to DB";
   include '../includes/header.php';
+  include '../classes/MovieActorDBO.php';
+
+  $DBO = new MovieActorDB();
+  $movieShowJSON = $DBO->queryJSON("
+    SELECT movie.title AS title FROM movie
+    UNION ALL
+    SELECT tvshow.title AS title FROM tvshow
+    ORDER BY title
+    ");
 ?>
   <body>
   <?php include '../includes/navigation.php'; ?>
@@ -108,7 +117,8 @@
         <fieldset>
           <legend>Add Review</legend>
           <label for="review_title">Title of Movie / TV Show:</label>
-          <input type="text" name="review_title" id="review_title">
+          <select name="review_title" id="review_list">
+          </select>
           <input type="submit" id="addReviewTitle">
         </fieldset>
       </form> 
@@ -117,4 +127,16 @@
 </div>
   </body>
   <script src='buttons.js'></script>
+
+  <script>
+  // testing with inline for now
+  var titles = <?php echo $movieShowJSON ?>;
+  console.log(JSON.stringify(titles, null, 2));
+  var options = $('#review_list');  
+  $.each(titles, function() {
+    options.append($("<option />").val(this.title).text(this.title));
+  });
+  </script>
 </html>
+
+
