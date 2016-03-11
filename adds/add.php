@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang='en'>
+
 <?php
   $title = "Add to DB";
   include '../includes/header.php';
@@ -119,7 +120,7 @@
         </fieldset>
       </form> 
     
-      <form method="get" id="gettitle" action="findReviewTitle.php">
+      <form method="get" id="gettitle" action="writeReview.php">
         <fieldset>
           <legend>Add Review</legend>
           <label for="review_title">Title of Movie / TV Show:</label>
