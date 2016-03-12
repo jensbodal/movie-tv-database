@@ -16,7 +16,26 @@
 }
 
 .addForms input, select {
-  margin: 0 5px;
+  margin-right: 10px;
+}
+
+#max {
+  margin-right: 5px;
+  font-weight: bold;
+}
+
+#reviewMaxLabel {
+  font-weight: normal;
+  font-size: 10px;
+  margin: 0px;
+}
+
+#reviewRating {
+  width: 60px;
+}
+
+#reviewURL {
+  width: 300px;
 }
 
 #addContainer {

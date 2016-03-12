@@ -66,11 +66,11 @@
         <label for="site_list">Rating Site Name:</label>
         <select name="site_list" id="site_list"></select>
         <label for="rating">Rating:</label>
-        <input type="number" step="0.1" name="rating" id="rating">
-        <label for="max">out of</label>
+        <input type="number" step="0.1" name="rating" id="reviewRating">
+        <label for="max" id="reviewMaxLabel">out of</label>
         <div id="max" style="display: inline"></div>
         <label for="url">URL:</label>
-        <input type="test" name="url" id="url">
+        <input type="text" name="url" id="reviewURL">
         <input type="button" id="addRating" value="Submit Review">
       </fieldset>
     </form>
