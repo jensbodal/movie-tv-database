@@ -25,7 +25,7 @@
   ) mov_tv ON mov_tv.media_id = media.id
   WHERE title = '".$title."'");
 
-  $ratings_siteJSON = $DBO->queryJSON("SELECT id, name FROM site");
+  $ratings_siteJSON = $DBO->queryJSON("SELECT id, name, max_rating FROM site");
 
   if (count($rows) > 0):
 ?>
@@ -65,6 +65,7 @@
         <legend>Review</legend>
         <label for="site_list">Rating Site Name:</label>
         <select name="site_list" id="site_list"></select>
+        <div id="max"></div>
         <label for="rating">Rating:</label>
         <input type="number" name="rating" id="rating">
         <label for="url">URL:</label>

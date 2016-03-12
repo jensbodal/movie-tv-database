@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', newRating);
+//document.addEventListener('DOMContentLoaded', updateMax);
 
 function newRating() {
   document.getElementById('addRating').addEventListener('click', function(event) {
@@ -37,3 +38,43 @@ function newRating() {
     event.preventDefault();
   });
 }
+
+// function updateMax() {
+
+  // document.getElementById('site_list').addEventListener('change', function(event) {
+    // var request = new XMLHttpRequest();
+    
+    // var site_name = document.getElementById('site_list').value;
+    
+    // request.onreadystatechange = function() {
+      // if (request.readyState == 4 && request.status == 200) {
+        // console.log(request.responseText);
+
+        // var response = JSON.parse(request.responseText);
+        // document.getElementById('max').innerHTML=response;
+      // }
+    // }
+    
+    // request.open('GET', 'getSiteMax.php?site_name=' + site_name, true);
+    // request.send(null);
+    // event.preventDefault();
+  // });
+// }
+
+function updateMax() {
+ $(document).ready(function() {
+  // document.getElementById('site_list').addEventListener('change', function(event) {
+    var site_name = document.getElementById('site_list').value;
+    var site_request = 'getSiteMax.php?site_name=' + site_name;
+    console.log(site_request);
+    $.get('getSiteMax.php?site_name=IMDB', function(result) {
+        console.log(result);
+      }, 'json'
+    );
+    // $.getJSON('getSiteMax.php?site_name=IMDB', function(data) {
+      // console.log(data[0].max_rating); 
+    // });
+  // });
+ });
+}
+updateMax();
