@@ -65,9 +65,10 @@
         <legend>Review</legend>
         <label for="site_list">Rating Site Name:</label>
         <select name="site_list" id="site_list"></select>
-        <div id="max"></div>
         <label for="rating">Rating:</label>
-        <input type="number" name="rating" id="rating">
+        <input type="number" step="0.1" name="rating" id="rating">
+        <label for="max">out of</label>
+        <div id="max" style="display: inline"></div>
         <label for="url">URL:</label>
         <input type="test" name="url" id="url">
         <input type="button" id="addRating" value="Submit Review">
