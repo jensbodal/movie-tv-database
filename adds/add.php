@@ -128,8 +128,9 @@
           <input type="submit" id="addReviewTitle">
         </fieldset>
       </form> 
-      <p id="result"><p>
+
   </div>
+  <p id="result"><p>
 </div>
   <script src='buttons.js'></script>
   <script>

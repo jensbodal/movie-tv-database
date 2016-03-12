@@ -18,7 +18,6 @@ $rows = $DBO->query("
         GROUP BY title
         ORDER BY title");
 
-if (count($rows) > 0):
 ?>
 <body>
   <?php include '../includes/navigation.php' ?>;
@@ -35,6 +34,7 @@ if (count($rows) > 0):
             <td>Genre(s)</td>
         </thead>
 
+  <?php if (count($rows) > 0): ?>
     <?php foreach($rows as $row): ?>
         <tr id='movieItem-<?=$row['movie_id']?>'>
           <td><?=$row['title']?></td>
