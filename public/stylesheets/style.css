@@ -3,6 +3,13 @@
     font-color: #000;
 }
 
+.deleteMode {
+    background-color: #d9534f;
+    background-image: linear-gradient(rgb(217, 83, 79) 0px, rgb(193, 46, 42) 100%);
+    background-repeat: repeat-x;
+    color: rgb(255, 255, 255);
+}
+
 .addForms {
   font-size: 12px;
 }
@@ -14,3 +21,96 @@
 thead {
   font-weight: bold;
 }
+
+#tableCaption {
+  font-size: 32px;
+}
+
+/* View section */
+#viewEditToggle {
+  padding-left: 200px;
+}
+
+/* views/subViews settings */
+// ivt-section
+// ivt-name
+// ivt-data
+
+/* Apply to entire section */
+.ivt-section {
+  font-size:25px;
+  border-bottom-left-radius: 20px;
+
+}
+
+.ivt-section h1 {
+  font-size: 21px;
+}
+
+.ivt-section ul {
+  padding: 0;
+}
+
+.ivt-section li {
+  list-style: none;
+}
+
+.ivt-section .no-padding {
+  padding: 0;
+}
+
+
+/* Item View Table Settings */
+.ivt-name h1, .ivt-data h1 {
+  background: #6b6b6b none repeat scroll 0 0;
+  color: #fff;
+  font-weight: 600;
+  margin: 0;
+  padding: 19px 21px;
+}
+
+.ivt-name li, .ivt-data li {
+  height: 60px;
+}
+
+/* ivt-name class */
+.ivt-name h1 {
+  border-top-left-radius: 20px;
+  text-align: center;
+}
+
+.ivt-name li {
+  background: #e25d33 none repeat scroll 0 0;
+  border-bottom: 4px solid #e5a253; 
+  color: white; 
+  font-size: 20px;
+  padding: 15px 24px;
+}
+
+/* ivt-data class */
+.ivt-data {
+  width: 500px;
+}
+.ivt-data h1 {
+  border-top-right-radius: 20px;
+  text-align: center;
+}
+
+.ivt-data li {
+  background: #efefef none repeat scroll 0 0;
+  border-bottom: 4px solid #d4d4d4;
+  padding: 19px 21px;
+  font-size: 18px;
+}
+
+/* Bottom row border */
+.ivt-name-last {
+  border-bottom-left-radius: 20px;
+}
+
+.ivt-data-last {
+  border-bottom-right-radius: 20px;
+}
+
+
+

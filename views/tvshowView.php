@@ -21,7 +21,7 @@ if (count($rows) > 0):
     <div class="container theme-showcase" role="main">
       <div id="blockContent" class="page-header">
         <table id="mainTable" class="table table-bordered">
-          <caption>TV Shows</caption>
+          <caption id="tableCaption">TV Shows</caption>
           <thead>
               <td>TV Show Title</td>
               <td>Start Year</td>

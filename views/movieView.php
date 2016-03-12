@@ -13,8 +13,8 @@ $DBO = new MovieActorDB();
 
 $rows = $DBO->query("
     SELECT movie.id AS movie_id, title, release_date, release_country, runtime, content_rating, GROUP_CONCAT(genre.genre_type ORDER BY genre.genre_type SEPARATOR ', ') AS genre_type FROM movie 
-        INNER JOIN movie_genre ON movie_genre.movie_id = movie.id 
-        INNER JOIN genre ON genre.id = movie_genre.genre_id 
+        LEFT JOIN movie_genre ON movie_genre.movie_id = movie.id 
+        LEFT JOIN genre ON genre.id = movie_genre.genre_id 
         GROUP BY title
         ORDER BY title");
 
