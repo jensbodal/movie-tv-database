@@ -24,7 +24,7 @@
   <?php include '../includes/navigation.php'; ?>
   <div id="addContainer" class="container theme-showcase addForms" role="main">
     <div id="blockContent" class="page-header">
-      <form>
+      <form class="addForms">
         <fieldset>
           <legend>Person</legend>
           <label for="first_name">First Name:</label>
@@ -42,7 +42,7 @@
           <input type="submit" id="newActor">
         </fieldset>
       </form>
-      <form>
+      <form class="addForms">
         <fieldset>
           <legend>Movie</legend>
           <label for="title">Title:</label>
@@ -70,7 +70,7 @@
           <input type="submit" id="newMovie">
         </fieldset>
       </form>
-      <form>
+      <form class="addForms">
         <fieldset>
           <legend>TV Show</legend>
           <label for="title">Title:</label>
@@ -104,7 +104,7 @@
         </fieldset>
       </form>  
 
-      <form>
+      <form class="addForms">
         <fieldset>
           <legend>Rating Site</legend>
           <label for="name">Site Name:</label>
@@ -120,7 +120,7 @@
         </fieldset>
       </form> 
     
-      <form method="get" id="gettitle" action="writeReview.php">
+      <form method="get" id="gettitle" class="addForms" action="writeReview.php">
         <fieldset>
           <legend>Add Review</legend>
           <label for="review_title">Title of Movie / TV Show:</label>

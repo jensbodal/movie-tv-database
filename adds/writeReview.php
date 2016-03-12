@@ -60,7 +60,7 @@
 ?>
 <div class="container theme-showcase" role="main">
   <div id="blockContent" class="page-header">
-    <form>
+    <form class="addForms" >
       <fieldset>
         <legend>Review</legend>
         <label for="site_list">Rating Site Name:</label>

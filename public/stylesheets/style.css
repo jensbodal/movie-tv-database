@@ -12,6 +12,11 @@
 
 .addForms {
   font-size: 12px;
+  padding-bottom: 10px;
+}
+
+.addForms input, select {
+  margin: 0 5px;
 }
 
 #addContainer {
