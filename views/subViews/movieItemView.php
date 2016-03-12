@@ -38,19 +38,19 @@ if ($isGET) {
 if (count($rows) > 0):
 ?>
 <table id="movieTable" class="table table-bordered">
-    <caption id='tableCaption'>Movies</caption>
-    <thead>
-        <td>Movie Title</td>
-        <td>Actor First Name</td>
-        <td>Actor Last Name</td>
-    </thead>
+  <caption id='tableCaption'>Movies</caption>
+  <thead>
+    <td>Movie Title</td>
+    <td>Actor First Name</td>
+    <td>Actor Last Name</td>
+  </thead>
 
 <?php foreach($rows as $row): ?>
-    <tr>
-        <td><?=$row['t']?></td>
-        <td><?=$row['fn']?></td>
-        <td><?=$row['ln']?></td>
-    </tr>
+  <tr>
+    <td><?=$row['t']?></td>
+    <td><?=$row['fn']?></td>
+    <td><?=$row['ln']?></td>
+  </tr>
 <?php endforeach; ?>
 
 </table>
@@ -59,7 +59,7 @@ if (count($rows) > 0):
 <?php
 
 else:
-    echo "0 results";
+  echo "0 results";
 
 endif;
 

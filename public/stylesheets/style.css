@@ -10,3 +10,7 @@
 #addContainer {
   width: 90%;
 }
+
+thead {
+  font-weight: bold;
+}
