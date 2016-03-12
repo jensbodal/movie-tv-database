@@ -15,7 +15,6 @@ $rows = $DBO->query("
   SELECT id, title, start_year, end_year, release_country, content_rating FROM tvshow ORDER BY title
   ");
 
-if (count($rows) > 0):
 ?>
 
 <body>
@@ -32,6 +31,7 @@ if (count($rows) > 0):
               <td>Content Rating</td>
           </thead>
 
+      <?php if (count($rows) > 0): ?>
         <?php foreach($rows as $row): ?>
           <tr id='tvshowItem-<?=$row['id']?>'>
               <td><?=$row['title']?></td>

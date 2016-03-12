@@ -13,7 +13,6 @@ $DBO = new MovieActorDB();
 
 $rows = $DBO->query("SELECT first_name, last_name, birthdate FROM person INNER JOIN actor ON actor.person_id = person.id ORDER BY first_name");
 
-if (count($rows) > 0):
 ?>
 
 
@@ -28,7 +27,7 @@ if (count($rows) > 0):
             <td>Last Name</td>
             <td>Born</td>
           </thead>
-
+    <?php if (count($rows) > 0): ?>
       <?php foreach($rows as $row): ?>
           <!-- id='actorItemView-actorid' if we want to add functionality -->
           <tr>

@@ -13,8 +13,8 @@ $DBO = new MovieActorDB();
 
 $rows = $DBO->query("SELECT first_name, last_name, birthdate FROM person INNER JOIN director ON director.person_id = person.id ORDER BY first_name");
 
-if (count($rows) > 0):
 ?>
+
 <body>
   <?php include '../includes/navigation.php' ?>;
   <div class="container theme-showcase" role="main">
@@ -27,6 +27,7 @@ if (count($rows) > 0):
           <td>Born</td>
         </thead>
 
+    <?php if (count($rows) > 0): ?>
       <?php foreach($rows as $row): ?>
         <tr>
           <td><?=$row['first_name']?></td>
