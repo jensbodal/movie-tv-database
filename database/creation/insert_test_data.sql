@@ -256,10 +256,11 @@ INSERT INTO person(first_name, last_name, birthdate) VALUES
   ("Benedict", "Cumberbatch", "1976-07-19"),
   ("Daniel", "Brühl", "1978-06-16"),
   ("Alicia", "Vikander", "1988-10-03"),
-  ("Bill", "Condon", "1955-10-22")
-  ("Marc", "Forster", "1969-11-30")
-  ("Mike", "Newell", "1942-03-28")
-  ("Armando", "Iannucci", "1963-11-28");
+  ("Bill", "Condon", "1955-10-22"),
+  ("Marc", "Forster", "1969-11-30"),
+  ("Mike", "Newell", "1942-03-28"),
+  ("Armando", "Iannucci", "1963-11-28"),
+  ("Les", "Mayfield", "1959-11-30");
 
 -- INSERT ACTOR --
 INSERT INTO actor(person_id) VALUES
@@ -275,7 +276,7 @@ INSERT INTO actor(person_id) VALUES
   ((SELECT id FROM person WHERE (first_name = "Peter" AND last_name = "Capaldi"))),
   ((SELECT id FROM person WHERE (first_name = "David" AND last_name = "Thewlis"))),
   ((SELECT id FROM person WHERE (first_name = "Benedict" AND last_name = "Cumberbatch"))),
-  ((SELECT id FROM person WHERE (first_name = "Daniel" AND last_name = "Brühl"))),
+  ((SELECT id FROM person WHERE (first_name = "Daniel" AND last_name = "Bruhl"))),
   ((SELECT id FROM person WHERE (first_name = "Alicia" AND last_name = "Vikander")));
 
 -- INSERT DIRECTOR --
@@ -285,7 +286,8 @@ INSERT INTO director(person_id) VALUES
   ((SELECT id FROM person WHERE (first_name = "Bill" AND last_name = "Condon"))),
   ((SELECT id FROM person WHERE (first_name = "Marc" AND last_name = "Forster"))),
   ((SELECT id FROM person WHERE (first_name = "Mike" AND last_name = "Newell"))),
-  ((SELECT id FROM person WHERE (first_name = "Armando" AND last_name = "Iannucci")));
+  ((SELECT id FROM person WHERE (first_name = "Armando" AND last_name = "Iannucci"))),
+  ((SELECT id FROM person WHERE (first_name = "Les" AND last_name = "Mayfield")));
 
 -- INSERT MEDIA_ACTOR TV SHOW --
 INSERT INTO media_actor(media_id, actor_id) VALUES
@@ -301,7 +303,7 @@ INSERT INTO media_actor(media_id, actor_id) VALUES
 	(SELECT actor.id FROM actor INNER JOIN person ON actor.person_id = person.id WHERE (person.first_name = "Charlie" AND person.last_name = "Cox")));
 
 INSERT INTO media_actor(media_id, actor_id) VALUES
-	((SELECT media_id FROM tvshow WHERE (title = "Broadchurch" AND release_country = "USA")), 
+	((SELECT media_id FROM tvshow WHERE title = "Broadchurch"), 
 	(SELECT actor.id FROM actor INNER JOIN person ON actor.person_id = person.id WHERE (person.first_name = "David" AND person.last_name = "Tennant")));
 
 INSERT INTO media_actor(media_id, actor_id) VALUES
