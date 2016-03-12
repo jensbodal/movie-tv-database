@@ -2,8 +2,6 @@ document.addEventListener('DOMContentLoaded', addActor);
 document.addEventListener('DOMContentLoaded', addMovie);
 document.addEventListener('DOMContentLoaded', addTVShow);
 document.addEventListener('DOMContentLoaded', addSite);
-//document.addEventListener('DOMContentLoaded', addReviewTitle);
-
 
 function addActor() {
   document.getElementById('newActor').addEventListener('click', function(event) {

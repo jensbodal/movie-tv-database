@@ -2,6 +2,7 @@ createReviewList();
 createGenreList();
 createCountryList();
 
+
 // titles exported from PHP
 function createReviewList() {
   var options = $('#review_list');  
