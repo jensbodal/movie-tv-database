@@ -104,7 +104,8 @@ function deleteMovieItem(movie) {
       }
       else if (response.status == 'success') {
         console.log("SUCCESS");
-        window.location.reload(true);
+        var rowId = ('#'+movie.selector); 
+        $('#mainTable '+rowId).remove();
       }
       else {
         console.log("SOMETHING TERRIBLE WENT WRONG");

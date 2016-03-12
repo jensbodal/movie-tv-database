@@ -11,7 +11,9 @@ ini_set('display_errors', 'On');
 
 $DBO = new MovieActorDB();
 
-$rows = $DBO->query("SELECT title, start_year, end_year, release_country, content_rating FROM tvshow ORDER BY title");
+$rows = $DBO->query("
+  SELECT id, title, start_year, end_year, release_country, content_rating FROM tvshow ORDER BY title
+  ");
 
 if (count($rows) > 0):
 ?>
@@ -31,7 +33,7 @@ if (count($rows) > 0):
           </thead>
 
         <?php foreach($rows as $row): ?>
-          <tr>
+          <tr id='tvshowItem-<?=$row['id']?>'>
               <td><?=$row['title']?></td>
               <td><?=$row['start_year']?></td>
               <td><?php $endYear=$row['end_year']; if($endYear == '') echo '∞'; else echo $endYear; ?></td>
