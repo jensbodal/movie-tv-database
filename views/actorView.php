@@ -11,7 +11,7 @@ ini_set('display_errors', 'On');
 
 $DBO = new MovieActorDB();
 
-$rows = $DBO->query("SELECT first_name, last_name, birthdate FROM person INNER JOIN actor ON actor.person_id = person.id ORDER BY first_name");
+$rows = $DBO->query("SELECT actor.id AS actor_id, first_name, last_name, birthdate FROM person INNER JOIN actor ON actor.person_id = person.id ORDER BY first_name");
 
 ?>
 
@@ -21,7 +21,7 @@ $rows = $DBO->query("SELECT first_name, last_name, birthdate FROM person INNER J
   <div class="container theme-showcase" role="main">
     <div id="blockContent" class="page-header">
       <table id="mainTable" class="table table-bordered">
-        <caption>Actors</caption>
+        <caption id='tableCaption'>Actors</caption>
           <thead>
             <td>First Name</td>
             <td>Last Name</td>
@@ -29,8 +29,7 @@ $rows = $DBO->query("SELECT first_name, last_name, birthdate FROM person INNER J
           </thead>
     <?php if (count($rows) > 0): ?>
       <?php foreach($rows as $row): ?>
-          <!-- id='actorItemView-actorid' if we want to add functionality -->
-          <tr>
+        <tr id='actorItem-<?=$row['actor_id']?>'>
             <td><?=$row['first_name']?></td>
             <td><?=$row['last_name']?></td>
             <td><?=$row['birthdate']?></td>

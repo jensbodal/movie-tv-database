@@ -11,7 +11,7 @@ ini_set('display_errors', 'On');
 
 $DBO = new MovieActorDB();
 
-$rows = $DBO->query("SELECT first_name, last_name, birthdate FROM person INNER JOIN director ON director.person_id = person.id ORDER BY first_name");
+$rows = $DBO->query("SELECT director.id AS director_id, first_name, last_name, birthdate FROM person INNER JOIN director ON director.person_id = person.id ORDER BY first_name");
 
 ?>
 
@@ -20,7 +20,7 @@ $rows = $DBO->query("SELECT first_name, last_name, birthdate FROM person INNER J
   <div class="container theme-showcase" role="main">
     <div id="blockContent" class="page-header">
       <table id="mainTable" class="table table-bordered">
-        <caption>Directors</caption>
+        <caption id='tableCaption'>Directors</caption>
         <thead>
           <td>First Name</td>
           <td>Last Name</td>
@@ -29,7 +29,7 @@ $rows = $DBO->query("SELECT first_name, last_name, birthdate FROM person INNER J
 
     <?php if (count($rows) > 0): ?>
       <?php foreach($rows as $row): ?>
-        <tr>
+        <tr id="directorItem-<?$row['director_id']?>">
           <td><?=$row['first_name']?></td>
           <td><?=$row['last_name']?></td>
           <td><?=$row['birthdate']?></td>

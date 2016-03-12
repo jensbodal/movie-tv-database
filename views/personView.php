@@ -11,7 +11,7 @@ ini_set('display_errors', 'On');
 
 $DBO = new MovieActorDB();
 
-$rows = $DBO->query("SELECT first_name, last_name, birthdate FROM person ORDER BY first_name");
+$rows = $DBO->query("SELECT person.id AS person_id, first_name, last_name, birthdate FROM person ORDER BY first_name");
 
 ?>
 <body>
@@ -19,7 +19,7 @@ $rows = $DBO->query("SELECT first_name, last_name, birthdate FROM person ORDER B
   <div class="container theme-showcase" role="main">
     <div id="blockContent" class="page-header">
       <table id="mainTable" class="table table-bordered">
-        <caption>All People</caption>
+        <caption id='tableCaption'>All People</caption>
           <thead>
             <td>First Name</td>
             <td>Last Name</td>
@@ -28,7 +28,7 @@ $rows = $DBO->query("SELECT first_name, last_name, birthdate FROM person ORDER B
 
     <?php if (count($rows) > 0): ?>
       <?php foreach($rows as $row): ?>
-          <tr>
+        <tr id="personItem-<?=$row['person_id']?>">
             <td><?=$row['first_name']?></td>
             <td><?=$row['last_name']?></td>
             <td><?=$row['birthdate']?></td>
