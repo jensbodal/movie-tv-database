@@ -9,7 +9,8 @@ function createCountryList() {
     {'country':'USA'},
     {'country':'UK'}
   ]
-  searchCountries.append($("<option />").val("").text(""));
+
+  searchCountries.append($("<option id='countryLabel' />").val("").text("[Country]"));
   $.each(countries, function() {
     searchCountries.append($("<option />").val(this.country).text(this.country));
   });
@@ -26,8 +27,10 @@ function createRatingOptions() {
     {'rating':'NR'}    
   ]
   $.each(ratings, function() {
-    searchRatings.append($("<label />").val(this.rating).text(this.rating));
-    searchRatings.append($("<input type='checkbox' name='searchRatings'/>").val(this.rating).text(this.rating));
+    var $label = $("<label>").text(this.rating);
+    var $checkbox = $("<input type='checkbox' name='searchRatings'>").val(this.rating).text(this.rating);
+    $checkbox.appendTo($label);
+    searchRatings.append($label);
   });
 }
 
@@ -35,8 +38,10 @@ function createRatingOptions() {
 function createGenreList() {
   var movieGenres = $('#genresHolder');
   $.each(genres, function() {
-    movieGenres.append($("<label />").val(this.genre).text(this.genre));
-    movieGenres.append($("<input type='checkbox' name='searchGenres'/>").val(this.genre).text(this.genre));
+    var $label = $("<label>").text(this.genre);
+    var $checkbox = $("<input type='checkbox' name='searchGenres'/>").val(this.genre).text(this.genre);
+    $checkbox.appendTo($label);
+    movieGenres.append($label);
   });
 }
 

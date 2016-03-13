@@ -208,30 +208,30 @@
   endif;
   ?>
   <div class="container theme-showcase" role="main">
-    <form>
+    <form id="movieSearchForm" class="form">
       <fieldset>
         <div class="col-md-2 text-center">
-          <input type="text" id="searchActorFirst" placeholder="Actor First Name">
-          <input type="text" id="searchActorLast" placeholder="Actor Last Name">
+          <input type="text" class="form-control" id="searchActorFirst" placeholder="Actor First Name">
+          <input type="text" class="form-control" id="searchActorLast" placeholder="Actor Last Name">
           <input type="radio" name="actorIn" value="IN" checked="checked">IN
           <input type="radio" name="actorIn" value="NOT_IN">NOT IN
-          
-          <input type="text" id="searchDirectorFirst" placeholder="Director First Name">
-          <input type="text" id="searchDirectorLast" placeholder="Director Last Name">
+        </div>
+        <div class="col-md-2 text-center">        
+          <input type="text" class="form-control" id="searchDirectorFirst" placeholder="Director First Name">
+          <input type="text" class="form-control" id="searchDirectorLast" placeholder="Director Last Name">
           <input type="radio" name="directorIn" value="IN" checked="checked">IN
           <input type="radio" name="directorIn" value="NOT_IN">NOT IN
         </div>
         <div class="col-md-2 text-center">
-          <input type="number" id="searchRelease" placeholder="Release Year">
+          <input type="number" class="form-control" id="searchRelease" placeholder="Release Year">
           
-          <select id="searchCountry"></select>
-          <input type="number" id="searchRuntime" placeholder="Runtime">
-        </div>         
-        <div class="col-md-2 text-center" id="ratingsHolder"></div>
-        <div class="col-md-4 text-center" id="genresHolder"></div>
- 
-        <div class="col-md-2 text-center">
-        <input type="submit" class="btn btn-primary" id="movieSearch" value="Search">
+          <select id="searchCountry" class="form-control" ></select>
+          <input type="number" class="form-control" id="searchRuntime" placeholder="Runtime">
+        </div>  
+        <div class="col-md-2" id="ratingsHolder"></div>
+        <div class="col-md-3" id="genresHolder"></div>
+        <div class="col-sm-1 text-center">
+          <input type="submit" class="btn btn-primary" id="movieSearch" value="Search">
         </div>
       <fieldset>
     </form>
