@@ -77,7 +77,7 @@ function search() {
         genres += allGenres[i].value + ",";
       }
     }
-    queryString += '&genres' + genres;
+    queryString += '&genres=' + genres;
     
     var allRatings = document.getElementsByName('searchRatings');
     var ratings = "";

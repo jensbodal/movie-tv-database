@@ -84,7 +84,13 @@
         $queryString .= $yearString;
       }
       if ($_GET['genres']) {
-        $genreString = "(genre_type = 'Action' OR genre_type = 'Comedy' OR genre_type = 'Drama' OR genre_type = 'Adventure')";
+        $genres = explode (",", $_GET['genres']);
+        $numGenres = sizeof($genres);
+        $genreString = "(genre_type = '" . $genres[0] . "'"; 
+        for ($i = 1; $i < $numGenres; $i++) {
+          $genreString .= " OR genre_type = '" . $genres[$i] . "'";
+        }
+        $genreString .= ")";
         $queryString .= $genreString;
       }
       if ($_GET['ratings']) {
