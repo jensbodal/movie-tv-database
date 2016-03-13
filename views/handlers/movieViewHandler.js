@@ -51,6 +51,7 @@ function search() {
         actorIn = actorIncluded[i].value;
       }
     }
+    var queryString = '?actor=' + actor + '&actorIn=' + actorIn;
     
     var director = document.getElementById('searchDirector').value;
     var directorIncluded = document.getElementById('directorIn');
@@ -60,10 +61,11 @@ function search() {
         directorIn = directorIncluded[i].value;
       }
     }
+    queryString += '&director=' + director + '&directorIn=' + 'directorIn;
     
-    var release = document.getElementById('searchRelease').value;
-    
+    var release = document.getElementById('searchRelease').value;  
     var country = document.getElementById('searchCountry').value;
+    queryString += '&release=' + release + '&country=' + country;
     
     var allGenres = document.getElementsByName('searchGenres');
     var genres = "";
@@ -72,6 +74,7 @@ function search() {
         genres += allGenres[i].value + ",";
       }
     }
+    queryString += '&genres' + genres;
     
     var allRatings = document.getElementsByName('searchRatings');
     var ratings = "";
@@ -80,7 +83,7 @@ function search() {
         ratings += allRatings[i].value + ",";
       }
     } 
-    var queryString = '?actor=' + actor + '&director=' + director + '&release=' + release + '&country=' + country + '&genres=' + genres + '&ratings=' + ratings;
+    var queryString += '&ratings=' + ratings;
     window.location = queryString;
 
     event.preventDefault();
