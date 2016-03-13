@@ -76,26 +76,52 @@
         $queryString .= $countryString;
       }
       if ($_GET['runtime']) {
-        $runtimeString = "runtime = ".$_GET['runtime']."";
-        $queryString .= $runtimeString;
+          $runtimeString = "runtime = ".$_GET['runtime']."";
+        if (!strcmp(substr($queryString, -6), "WHERE ")) {
+          $queryString .= $runtimeString;
+        }
+        else {
+          $queryString .= " AND " . $runtimeString;
+        }
       }
       if ($_GET['year']) {
         $yearString = "YEAR(release_date) = ".$_GET['year']."";
-        $queryString .= $yearString;
+        if (!strcmp(substr($queryString, -6), "WHERE ")) {
+          $queryString .= $yearString;
+        }
+        else {
+          $queryString .= " AND " . $yearString;
+        }
       }
       if ($_GET['genres']) {
         $genres = explode (",", $_GET['genres']);
-        $numGenres = sizeof($genres);
+        $numGenres = sizeof($genres) - 1;
         $genreString = "(genre_type = '" . $genres[0] . "'"; 
         for ($i = 1; $i < $numGenres; $i++) {
           $genreString .= " OR genre_type = '" . $genres[$i] . "'";
         }
         $genreString .= ")";
-        $queryString .= $genreString;
+        if (!strcmp(substr($queryString, -6), "WHERE ")) {
+          $queryString .= $genreString;
+        }
+        else {
+          $queryString .= " AND " . $genreString;
+        }
       }
       if ($_GET['ratings']) {
-        $ratingString = "(content_rating = 'PG' OR content_rating = 'R' OR content_rating = 'PG-13')";
-        $queryString .= $ratingString;
+        $ratings = explode (",", $_GET['ratings']);
+        $numRatings = sizeof($ratings) - 1;
+        $ratingString = "(content_rating = '" . $ratings[0] . "'";
+        for ($i = 1; $i < $numRatings; $i++) {
+          $ratingString .= " OR content_rating ='" . $ratings[$i] . "'"; 
+        }
+        $ratingString .= ")";
+        if (!strcmp(substr($queryString, -6), "WHERE ")) {
+          $queryString .= $ratingString;
+        }
+        else {
+          $queryString .= " AND " . $ratingString;
+        }
       }
     }
         
