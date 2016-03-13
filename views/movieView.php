@@ -10,7 +10,6 @@
   ini_set('display_errors', 'On');
 
   $DBO = new MovieActorDB();
-
   if (count($_GET) > 0) {
    $startString = "SELECT movie.id AS movie_id, title, release_date, release_country, runtime, content_rating, GROUP_CONCAT(genre.genre_type ORDER BY genre.genre_type SEPARATOR ', ') AS genre_type FROM movie 
                     LEFT JOIN media ON media.id = movie.media_id
@@ -29,11 +28,23 @@
                                 LEFT JOIN person on person.id = director.person_id 
                                 WHERE ";
       if ($_GET['directorFirst']) {
-        $directorFirst = "first_name = '".$_GET['directorFirst']."' ";
+        $directorFirst = "first_name ";
+        if (!strcmp($_GET['directorIn'], "IN")) {
+          $directorFirst .= "= '".$_GET['directorFirst']."' ";
+        }
+        else {
+          $directorFirst .= "!= '".$_GET['directorFirst']."' ";
+        }
         $directorString .= $directorFirst;
       }
       if ($_GET['directorLast']) {
-        $directorLast = "last_name = '".$_GET['directorLast']."' ";
+        $directorLast = "last_name ";
+        if (!strcmp($_GET['directorIn'], "IN")) {
+          $directorLast .= "= '".$_GET['directorLast']."' ";
+        }
+        else {
+          $directorLast .= "!= '".$_GET['directorLast']."' ";
+        }
         if (!strcmp(substr($directorString, -6), "WHERE ")) {
           $directorString .= $directorLast;
         }
@@ -52,11 +63,23 @@
                                   LEFT JOIN person on person.id = actor.person_id 
                                   WHERE ";
       if ($_GET['actorFirst']) {
-        $actorFirst = "first_name = '".$_GET['actorFirst']."' ";
+        $actorFirst = "first_name ";
+        if (!strcmp($_GET['actorIn'], "IN")) {
+          $actorFirst .= "= '".$_GET['actorFirst']."' ";
+        }
+        else {
+          $actorFirst .= "!= '".$_GET['actorFirst']."' ";
+        }
         $actorString .= $actorFirst;
       }
       if ($_GET['actorLast']) {
-        $actorLast = "last_name = '".$_GET['actorLast']."' ";
+        $actorLast = "last_name ";
+        if (!strcmp($_GET['actorIn'], "IN")) {
+          $actorLast .= "= '".$_GET['actorLast']."' ";
+        }
+        else {
+          $actorLast .= "!= '".$_GET['actorLast']."' ";
+        }
         if (!strcmp(substr($actorString, -6), "WHERE ")) {
           $actorString .= $actorLast;
         }
@@ -64,7 +87,7 @@
           $actorString .= "AND " . $actorLast;
         }
       }
-      $actorString .= ")a_reqs ON a_reqs.id = media.id ";   
+      $actorString .= ") a_reqs ON a_reqs.id = media.id ";   
       $queryString .= $actorString;
     }                                  
 
@@ -130,7 +153,6 @@
                   GROUP BY title
                   ORDER BY title";              
     $queryString .= $endString; 
-    echo $queryString;
     $rows = $DBO->query($queryString);
 
   }
@@ -191,13 +213,13 @@
         <div class="col-md-2 text-center">
           <input type="text" id="searchActorFirst" placeholder="Actor First Name">
           <input type="text" id="searchActorLast" placeholder="Actor Last Name">
-          <input type="radio" id="actorIn" value="IN">IN
-          <input type="radio" id="actorIn" value="NOT_IN">NOT IN
+          <input type="radio" name="actorIn" value="IN" checked="checked">IN
+          <input type="radio" name="actorIn" value="NOT_IN">NOT IN
           
           <input type="text" id="searchDirectorFirst" placeholder="Director First Name">
           <input type="text" id="searchDirectorLast" placeholder="Director Last Name">
-          <input type="radio" id="directorIn" value="IN">IN
-          <input type="radio" id="directorIn" value="NOT_IN">NOT IN
+          <input type="radio" name="directorIn" value="IN" checked="checked">IN
+          <input type="radio" name="directorIn" value="NOT_IN">NOT IN
         </div>
         <div class="col-md-2 text-center">
           <input type="number" id="searchRelease" placeholder="Release Year">

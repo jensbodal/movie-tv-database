@@ -45,8 +45,8 @@ function search() {
   document.getElementById('movieSearch').addEventListener('click', function(event) {
     var actorFirst = document.getElementById('searchActorFirst').value;
     var actorLast = document.getElementById('searchActorLast').value;
-    var actorIncluded = document.getElementById('actorIn');
-    var actorIn;
+    var actorIncluded = document.getElementsByName('actorIn');
+    var actorIn="";
     for (var i = 0; i < actorIncluded.length; i++) {
       if (actorIncluded[i].checked) {
         actorIn = actorIncluded[i].value;
@@ -56,11 +56,12 @@ function search() {
     
     var directorFirst = document.getElementById('searchDirectorFirst').value;
     var directorLast = document.getElementById('searchDirectorLast').value;
-    var directorIncluded = document.getElementById('directorIn');
-    var directorIn;
+    var directorIncluded = document.getElementsByName('directorIn');
+    var directorIn="";
     for (var i = 0; i < directorIncluded.length; i++) {
       if (directorIncluded[i].checked) {
         directorIn = directorIncluded[i].value;
+        console.log(directorIn);
       }
     }
     queryString += '&directorFirst=' + directorFirst + '&directorLast=' + directorLast + '&directorIn=' + directorIn;
