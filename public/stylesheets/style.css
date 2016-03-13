@@ -12,11 +12,33 @@
 
 .addForms {
   font-size: 12px;
-  padding-bottom: 10px;
+  padding-bottom: 30px;
 }
 
-.addForms input, select {
-  margin-right: 10px;
+.addForms label, input[type="radio"], input[type="submit"] {
+  margin-left: 10px;
+}
+
+.addForms input[type="date"] {
+  width: 120px;
+}
+
+.addForms input[type="number"] {
+  width: 50px;
+}
+
+.addForms #URL {
+  width: 250px;
+}
+
+#addRating {
+  margin-left: 10px;
+}
+
+#result {
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
 }
 
 #max {

@@ -71,7 +71,7 @@
         <div id="max" style="display: inline"></div>
         <label for="url">URL:</label>
         <input type="text" name="url" id="reviewURL">
-        <input type="button" id="addRating" value="Submit Review">
+        <input type="button" class="btn btn-primary" id="addRating" value="Submit Review">
       </fieldset>
     </form>
     <p id="result"></p>

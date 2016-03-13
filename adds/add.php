@@ -40,14 +40,12 @@
 
           <label for="birthday">Birthday:</label>
           <input type="date" name="birthday" id="birthday">
-          
           <input type="radio" name="role" id="role" value="actor" checked="checked"/>Actor
           <input type="radio" name="role" id="role" value="director"/>Director
           
           <label for="person_media">Movie / TV Show:</label>
           <select name="person_media" id="media_list"></select>
-          
-          <input type="submit" id="newPerson">
+          <input type="submit" class="btn btn-primary" id="newPerson">
         </fieldset>
       </form>
       <form class="addForms">
@@ -75,7 +73,7 @@
           <input type="radio" name="m_rating" id="m_rating" value="NC-17"/>NC-17
           <input type="radio" name="m_rating" id="m_rating" value="NR" checked="checked"/>NR
 
-          <input type="submit" id="newMovie">
+          <input type="submit" class="btn btn-primary" id="newMovie">
         </fieldset>
       </form>
       <form class="addForms">
@@ -108,11 +106,11 @@
           <input type="radio" name="rating" id="rating" value="TV-MA"/>TV MA        
           <input type="radio" name="rating" id="rating" value="NR" checked="checked"/>NR
 
-          <input type="submit" id="newTV">
+          <input type="submit" class="btn btn-primary" id="newTV">
         </fieldset>
       </form> 
 
-      <form>
+      <form class="addForms">
         <fieldset>
           <legend>TV Show Episode</legend>
           <label for="tv_show_list">TV Show:</label>
@@ -131,9 +129,9 @@
           <input type="number" name="season" id="season">
    
           <label for="ep_number">Episode Number:</label>
-          <input name="ep_number" id="ep_number"></input>
+          <input type="number" name="ep_number" id="ep_number"></input>
 
-          <input type="submit" id="newEp">
+          <input type="submit" class="btn btn-primary" id="newEp">
         </fieldset>
       </form>       
 
@@ -149,7 +147,7 @@
           <label for="max">Max Rating:</label>
           <input type="number" name="max" id="max">
 
-          <input type="submit" id="newSite">
+          <input type="submit" class="btn btn-primary" id="newSite">
         </fieldset>
       </form> 
     
@@ -158,7 +156,7 @@
           <legend>Add Review</legend>
           <label for="review_title">Title of Movie / TV Show:</label>
           <select name="review_title" id="review_list"></select>
-          <input type="submit" id="addReviewTitle">
+          <input type="submit" class="btn btn-primary" id="addReviewTitle">
         </fieldset>
       </form> 
 
