@@ -72,15 +72,15 @@
       $queryString .= " WHERE ";
       
       if ($_GET['country']) {
-        $countryString = "release_country = 'USA'";
+        $countryString = "release_country = '".$_GET['country']."'";
         $queryString .= $countryString;
       }
       if ($_GET['runtime']) {
-        $runtimeString = "runtime = 119";
+        $runtimeString = "runtime = ".$_GET['runtime']."";
         $queryString .= $runtimeString;
       }
       if ($_GET['year']) {
-        $yearString = "YEAR(release_date) = 2016";
+        $yearString = "YEAR(release_date) = ".$_GET['year']."";
         $queryString .= $yearString;
       }
       if ($_GET['genres']) {
