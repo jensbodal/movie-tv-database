@@ -6,8 +6,8 @@ function newRating() {
     var request = new XMLHttpRequest();
     var valid = true;
     var site_name = document.getElementById('site_list').value;
-    var url = document.getElementById('url').value;
-    var rating = document.getElementById('rating').value;
+    var url = document.getElementById('reviewURL').value;
+    var rating = document.getElementById('reviewRating').value;
     var max_rating = parseInt(document.getElementById('max').innerHTML);
 
     var ids = document.getElementsByName('media_id');
