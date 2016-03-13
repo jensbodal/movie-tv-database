@@ -228,9 +228,9 @@
           <select id="searchCountry" class="form-control" ></select>
           <input type="number" class="form-control" id="searchRuntime" placeholder="Runtime">
         </div>  
-        <div class="col-md-2" id="ratingsHolder"></div>
-        <div class="col-md-3" id="genresHolder"></div>
-        <div class="col-sm-1 text-center">
+        <div class="col-md-1" id="ratingsHolder"></div>
+        <div class="col-md-3 col-md-offset-1" id="genresHolder"></div>
+        <div class="col-md-1" id="searchHolder"></div>
           <input type="submit" class="btn btn-primary" id="movieSearch" value="Search">
         </div>
       <fieldset>
