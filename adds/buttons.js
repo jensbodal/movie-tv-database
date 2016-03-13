@@ -65,7 +65,7 @@ function addMovie() {
 
     request.onreadystatechange = function() {
       if (request.readyState == 4 && request.status == 200) {
-        document.getElementById("result").innerHTML = title + " was added successfully.";
+        document.getElementById("result").innerHTML = "\"" + title + "\" was added successfully.";
       }
     }
 
@@ -106,7 +106,7 @@ function addTVShow() {
 
     request.onreadystatechange = function() {
       if (request.readyState == 4 && request.status == 200) {
-        document.getElementById("result").innerHTML = title + " was added successfully.";
+        document.getElementById("result").innerHTML = "\"" + title + "\" was added successfully.";
       }
     }
 
@@ -137,27 +137,19 @@ function addEpisode() {
       valid = false;
     }
 
-    // request.onreadystatechange = function() {
-      // if (request.readyState == 4 && request.status == 200) {
-
-        // 
-      // }
-    // }
-
     // When the submit button is pressed, send a GET request to update the database
     if (valid == true) {
       $.get( 'addEpisode.php?tvshow=' + tvshow + '&title=' + title + "&date=" + date +
               '&runtime=' + runtime + '&season=' + season + '&number=' + number, function(result){
-        console.log(result.length);
         if(result.length === 2) {
-          document.getElementById("result").innerHTML = "Episode " + title + " of " +
+          document.getElementById('result').innerHTML = "Episode \"" + title + "\" of " +
           tvshow + " was added successfully.";
         }
         else {
           var episode = JSON.parse(result);
           document.getElementById("result").innerHTML = "Season " + episode[0].season + " episode " +
-          episode[0].episode_number + " of " + tvshow + " is already in the database. It is called: " +
-          episode[0].episode_title;
+          episode[0].episode_number + " of " + tvshow + " is already in the database. It is called: \"" +
+          episode[0].episode_title + "\"";
         }
       });
     }

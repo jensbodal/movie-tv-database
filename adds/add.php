@@ -13,7 +13,12 @@
     SELECT tvshow.title AS title FROM tvshow
     ORDER BY title ASC
     ");
-
+    
+  $TVShowJSON = $DBO->queryJSON("
+    SELECT title FROM tvshow
+    ORDER BY title ASC
+    ");
+    
   $genresJSON = $DBO->queryJSON("
     SELECT genre.genre_type AS genre FROM genre
       ORDER BY genre ASC
@@ -162,6 +167,7 @@
     // export PHP vars
     var titles = <?= $movieShowJSON ?>;
     var genres = <?= $genresJSON ?>;
+    var tvshow_titles = <?= $TVShowJSON ?>;
   </script>
   <script src='handlers/addHandler.js' type='text/javascript'></script>
   </body>

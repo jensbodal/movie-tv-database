@@ -1,15 +1,14 @@
-createShowList();
+createMediaList();
 createGenreList();
 createCountryList();
+createTVShowList();
 
 
 // titles exported from PHP
-function createShowList() {
-  var reviewOptions = $('#review_list');
-  var epOptions = $('#tvshow_list');  
+function createMediaList() {
+  var reviewOptions = $('#review_list'); 
   $.each(titles, function() {
     reviewOptions.append($("<option />").val(this.title).text(this.title));
-    epOptions.append($("<option />").val(this.title).text(this.title));
   });
 }
 
@@ -36,3 +35,10 @@ function createCountryList() {
   });
 }
 
+function createTVShowList() {
+  var epOptions = $('#tvshow_list');  
+  $.each(tvshow_titles, function() {
+    epOptions.append($("<option />").val(this.title).text(this.title));
+  });
+}
+    
