@@ -70,7 +70,7 @@
         <label for="max">out of</label>
         <div id="max" style="display: inline"></div>
         <label for="url">URL:</label>
-        <input type="test" name="url" id="url">
+        <input type="text" name="url" id="url">
         <input type="button" id="addRating" value="Submit Review">
       </fieldset>
     </form>

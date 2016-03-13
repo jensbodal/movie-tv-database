@@ -13,7 +13,12 @@
     SELECT tvshow.title AS title FROM tvshow
     ORDER BY title ASC
     ");
-
+    
+  $TVShowJSON = $DBO->queryJSON("
+    SELECT title FROM tvshow
+    ORDER BY title ASC
+    ");
+    
   $genresJSON = $DBO->queryJSON("
     SELECT genre.genre_type AS genre FROM genre
       ORDER BY genre ASC
@@ -102,7 +107,32 @@
 
           <input type="submit" id="newTV">
         </fieldset>
-      </form>  
+      </form> 
+
+      <form>
+        <fieldset>
+          <legend>TV Show Episode</legend>
+          <label for="tv_show_list">TV Show:</label>
+          <select name="tvshow_list" id="tvshow_list"></select>
+          
+          <label for="title">Episode Title:</label>
+          <input type="text" name="title" id="ep_title">
+          
+          <label for="ep_date">Air Date:</label>
+          <input type="date" name="ep_date" id="ep_date">
+          
+          <label for="ep_runtime">Runtime:</label>
+          <input type="number" name="ep_runtime" id="ep_runtime">
+
+          <label for="season">Season:</label>
+          <input type="number" name="season" id="season">
+   
+          <label for="ep_number">Episode Number:</label>
+          <input name="ep_number" id="ep_number"></input>
+
+          <input type="submit" id="newEp">
+        </fieldset>
+      </form>       
 
       <form>
         <fieldset>
@@ -137,6 +167,7 @@
     // export PHP vars
     var titles = <?= $movieShowJSON ?>;
     var genres = <?= $genresJSON ?>;
+    var tvshow_titles = <?= $TVShowJSON ?>;
   </script>
   <script src='handlers/addHandler.js' type='text/javascript'></script>
   </body>

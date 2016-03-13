@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', addActor);
 document.addEventListener('DOMContentLoaded', addMovie);
 document.addEventListener('DOMContentLoaded', addTVShow);
+document.addEventListener('DOMContentLoaded', addEpisode);
 document.addEventListener('DOMContentLoaded', addSite);
 
 function addActor() {
@@ -64,7 +65,7 @@ function addMovie() {
 
     request.onreadystatechange = function() {
       if (request.readyState == 4 && request.status == 200) {
-        document.getElementById("result").innerHTML = title + " was added successfully.";
+        document.getElementById("result").innerHTML = "\"" + title + "\" was added successfully.";
       }
     }
 
@@ -105,7 +106,7 @@ function addTVShow() {
 
     request.onreadystatechange = function() {
       if (request.readyState == 4 && request.status == 200) {
-        document.getElementById("result").innerHTML = title + " was added successfully.";
+        document.getElementById("result").innerHTML = "\"" + title + "\" was added successfully.";
       }
     }
 
@@ -114,6 +115,43 @@ function addTVShow() {
       request.open('GET', 'addTVShow.php?title=' + title + '&start_year=' + start_year + "&end_year=" + end_year +
         '&country=' + country + '&run_time=' + run_time + '&genre=' + genre + '&rating=' + rating, true);
       request.send(null);
+    }
+    event.preventDefault();
+  });
+}
+
+function addEpisode() {
+  document.getElementById('newEp').addEventListener('click', function(event) {
+    var request = new XMLHttpRequest();
+    var valid = true;
+    var tvshow = document.getElementById('tvshow_list').value;
+    var title = document.getElementById('ep_title').value;
+    var date = document.getElementById('ep_date').value;
+    var runtime = document.getElementById('ep_runtime').value;
+    var season = document.getElementById('season').value;
+    var number = document.getElementById('ep_number').value;    
+
+    // Ensure that all fields hold a value
+    if (title == "" || date == "" || runtime == "" || season == "" || number == "") {
+      document.getElementById("result").innerHTML = "Cannot submit incomplete data."; 
+      valid = false;
+    }
+
+    // When the submit button is pressed, send a GET request to update the database
+    if (valid == true) {
+      $.get( 'addEpisode.php?tvshow=' + tvshow + '&title=' + title + "&date=" + date +
+              '&runtime=' + runtime + '&season=' + season + '&number=' + number, function(result){
+        if(result.length === 2) {
+          document.getElementById('result').innerHTML = "Episode \"" + title + "\" of " +
+          tvshow + " was added successfully.";
+        }
+        else {
+          var episode = JSON.parse(result);
+          document.getElementById("result").innerHTML = "Season " + episode[0].season + " episode " +
+          episode[0].episode_number + " of " + tvshow + " is already in the database. It is called: \"" +
+          episode[0].episode_title + "\"";
+        }
+      });
     }
     event.preventDefault();
   });
