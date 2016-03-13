@@ -91,7 +91,8 @@ CREATE TABLE person (
 	first_name VARCHAR(255) NOT NULL,
 	last_name VARCHAR(255) NOT NULL,
 	birthdate DATE NOT NULL,
-	PRIMARY KEY(id)
+	PRIMARY KEY(id),
+  UNIQUE(first_name, last_name, birthdate)
 ) ENGINE = InnoDB DEFAULT CHARSET=utf8;
 	
 CREATE TABLE actor (

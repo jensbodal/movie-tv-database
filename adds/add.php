@@ -8,13 +8,13 @@
 
   $DBO = new MovieActorDB();
   $movieShowJSON = $DBO->queryJSON("
-    SELECT movie.title AS title FROM movie
+    SELECT movie.title AS title, movie.media_id AS media_id FROM movie
     UNION ALL
-    SELECT tvshow.title AS title FROM tvshow
+    SELECT tvshow.title AS title, tvshow.media_id AS media_id  FROM tvshow
     ORDER BY title ASC
     ");
     
-  $TVShowJSON = $DBO->queryJSON("
+  $tvShowJSON = $DBO->queryJSON("
     SELECT title FROM tvshow
     ORDER BY title ASC
     ");
@@ -44,7 +44,10 @@
           <input type="radio" name="role" id="role" value="actor" checked="checked"/>Actor
           <input type="radio" name="role" id="role" value="director"/>Director
           
-          <input type="submit" id="newActor">
+          <label for="person_media">Movie / TV Show:</label>
+          <select name="person_media" id="media_list"></select>
+          
+          <input type="submit" id="newPerson">
         </fieldset>
       </form>
       <form>
@@ -167,7 +170,7 @@
     // export PHP vars
     var titles = <?= $movieShowJSON ?>;
     var genres = <?= $genresJSON ?>;
-    var tvshow_titles = <?= $TVShowJSON ?>;
+    var tvshow_titles = <?= $tvShowJSON ?>;
   </script>
   <script src='handlers/addHandler.js' type='text/javascript'></script>
   </body>

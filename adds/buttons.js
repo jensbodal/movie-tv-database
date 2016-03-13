@@ -1,17 +1,18 @@
-document.addEventListener('DOMContentLoaded', addActor);
+document.addEventListener('DOMContentLoaded', addPerson);
 document.addEventListener('DOMContentLoaded', addMovie);
 document.addEventListener('DOMContentLoaded', addTVShow);
 document.addEventListener('DOMContentLoaded', addEpisode);
 document.addEventListener('DOMContentLoaded', addSite);
 
-function addActor() {
-  document.getElementById('newActor').addEventListener('click', function(event) {
+function addPerson() {
+  document.getElementById('newPerson').addEventListener('click', function(event) {
     var request = new XMLHttpRequest();
     var valid = true;
     var first_name = document.getElementById('first_name').value;
     var last_name = document.getElementById('last_name').value;
     var birthday = document.getElementById('birthday').value;
-    
+    var media = document.getElementById('media_list').value;
+    console.log(media);
     var roles = document.getElementsByName('role');
     var role;
     for (var i = 0; i < roles.length; i++) {
@@ -32,7 +33,8 @@ function addActor() {
     }
     // When the submit button is pressed, send a GET request to update the database
     if (valid == true) {
-      request.open('GET', 'addPerson.php?first_name=' + first_name + '&last_name=' + last_name + '&birthday=' + birthday + '&role=' + role, true);
+      request.open('GET', 'addPerson.php?first_name=' + first_name + '&last_name=' + last_name + 
+      '&birthday=' + birthday + '&role=' + role + '&media=' + media, true);
       request.send(null);
     }
     event.preventDefault();

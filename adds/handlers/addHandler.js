@@ -7,8 +7,11 @@ createTVShowList();
 // titles exported from PHP
 function createMediaList() {
   var reviewOptions = $('#review_list'); 
+  var personMediaOptions = $('#media_list');
+  personMediaOptions.append($("<option />").val("").text(""));
   $.each(titles, function() {
     reviewOptions.append($("<option />").val(this.title).text(this.title));
+    personMediaOptions.append($("<option />").val(this.media_id).text(this.title));
   });
 }
 
