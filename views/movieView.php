@@ -50,10 +50,23 @@
                                   LEFT JOIN media_actor ON media_actor.media_id = media.id
                                   LEFT JOIN actor ON actor.id = media_actor.actor_id  
                                   LEFT JOIN person on person.id = actor.person_id 
-                                  WHERE first_name = 'Ben' AND last_name = 'Stiller'
-                    ) AS a_reqs ON a_reqs.id = media.id ";  
+                                  WHERE ";
+      if ($_GET['actorFirst']) {
+        $actorFirst = "first_name = '".$_GET['actorFirst']."' ";
+        $actorString .= $actorFirst;
+      }
+      if ($_GET['actorLast']) {
+        $actorLast = "last_name = '".$_GET['actorLast']."' ";
+        if (!strcmp(substr($actorString, -6), "WHERE ")) {
+          $actorString .= $actorLast;
+        }
+        else {
+          $actorString .= "AND " . $actorLast;
+        }
+      }
+      $actorString .= ")a_reqs ON a_reqs.id = media.id ";   
       $queryString .= $actorString;
-    }
+    }                                  
 
     if ($_GET['country'] || $_GET['year'] || $_GET['runtime'] || $_GET['genres'] || $_GET['ratings']) {
       $queryString .= " WHERE ";
@@ -144,13 +157,13 @@
     <form>
       <fieldset>
         <div class="col-md-2 text-center">
-          <input type="text" id="searchActorFirst" placeholder="Actor">
-          <input type="text" id="searchActorLast" placeholder="Actor">
+          <input type="text" id="searchActorFirst" placeholder="Actor First Name">
+          <input type="text" id="searchActorLast" placeholder="Actor Last Name">
           <input type="radio" id="actorIn" value="IN">IN
           <input type="radio" id="actorIn" value="NOT_IN">NOT IN
           
-          <input type="text" id="searchDirectorFirst" placeholder="Director">
-          <input type="text" id="searchDirectorLast" placeholder="Actor">
+          <input type="text" id="searchDirectorFirst" placeholder="Director First Name">
+          <input type="text" id="searchDirectorLast" placeholder="Director Last Name">
           <input type="radio" id="directorIn" value="IN">IN
           <input type="radio" id="directorIn" value="NOT_IN">NOT IN
         </div>
