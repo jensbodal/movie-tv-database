@@ -1,13 +1,15 @@
-createReviewList();
+createShowList();
 createGenreList();
 createCountryList();
 
 
 // titles exported from PHP
-function createReviewList() {
-  var options = $('#review_list');  
+function createShowList() {
+  var reviewOptions = $('#review_list');
+  var epOptions = $('#tvshow_list');  
   $.each(titles, function() {
-    options.append($("<option />").val(this.title).text(this.title));
+    reviewOptions.append($("<option />").val(this.title).text(this.title));
+    epOptions.append($("<option />").val(this.title).text(this.title));
   });
 }
 
