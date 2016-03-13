@@ -60,17 +60,17 @@
 ?>
 <div class="container theme-showcase" role="main">
   <div id="blockContent" class="page-header">
-    <form class="addForms" >
+    <form class="addForms form-inline" >
       <fieldset>
         <legend>Review</legend>
         <label for="site_list">Rating Site Name:</label>
-        <select name="site_list" id="site_list"></select>
+        <select name="site_list" class="form-control" id="site_list"></select>
         <label for="rating">Rating:</label>
-        <input type="number" step="0.1" name="rating" id="reviewRating">
+        <input type="number" class="form-control" step="0.1" name="rating" id="reviewRating">
         <label for="max" id="reviewMaxLabel">out of</label>
         <div id="max" style="display: inline"></div>
         <label for="url">URL:</label>
-        <input type="text" name="url" id="reviewURL">
+        <input type="text" class="form-control" name="url" id="reviewURL">
         <input type="button" class="btn btn-primary" id="addRating" value="Submit Review">
       </fieldset>
     </form>
