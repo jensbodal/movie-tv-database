@@ -2,21 +2,41 @@
 <html lang='en'>
 <?php
 
-$title = "Movies";
-include '../includes/header.php';
-include '../classes/MovieActorDBO.php';
+  $title = "Movies";
+  include '../includes/header.php';
+  include '../classes/MovieActorDBO.php';
 
-// turn on errors
-ini_set('display_errors', 'On');
+  // turn on errors
+  ini_set('display_errors', 'On');
 
-$DBO = new MovieActorDB();
+  $DBO = new MovieActorDB();
 
-$rows = $DBO->query("
-    SELECT movie.id AS movie_id, title, release_date, release_country, runtime, content_rating, GROUP_CONCAT(genre.genre_type ORDER BY genre.genre_type SEPARATOR ', ') AS genre_type FROM movie 
-        LEFT JOIN movie_genre ON movie_genre.movie_id = movie.id 
-        LEFT JOIN genre ON genre.id = movie_genre.genre_id 
-        GROUP BY title
-        ORDER BY title");
+  if (!isset($_GET)) {
+    echo $_GET['actor'];
+    echo $_GET['genres'];
+    $rows = $DBO->query("
+      SELECT movie.id AS movie_id, title, release_date, release_country, runtime, content_rating, GROUP_CONCAT(genre.genre_type ORDER BY genre.genre_type SEPARATOR ', ') AS genre_type FROM movie 
+          LEFT JOIN movie_genre ON movie_genre.movie_id = movie.id 
+          LEFT JOIN genre ON genre.id = movie_genre.genre_id 
+          WHERE movie.id=1
+          GROUP BY title
+          ORDER BY title");
+  }
+  else {
+
+
+  $rows = $DBO->query("
+      SELECT movie.id AS movie_id, title, release_date, release_country, runtime, content_rating, GROUP_CONCAT(genre.genre_type ORDER BY genre.genre_type SEPARATOR ', ') AS genre_type FROM movie 
+          LEFT JOIN movie_genre ON movie_genre.movie_id = movie.id 
+          LEFT JOIN genre ON genre.id = movie_genre.genre_id 
+          GROUP BY title
+          ORDER BY title");
+  }
+       
+    $genresJSON = $DBO->queryJSON("
+      SELECT genre.genre_type AS genre FROM genre
+        ORDER BY genre ASC
+        ");
 
 ?>
 <body>
@@ -55,8 +75,39 @@ $rows = $DBO->query("
       echo "0 results";
   endif;
   ?>
-
+  <div class="container theme-showcase" role="main">
+    <form>
+      <fieldset>
+        <div class="col-md-2 text-center">
+          <input type="text" id="searchActor" placeholder="Actor">
+          <input type="radio" id="actorIn" value="IN">IN
+          <input type="radio" id="actorIn" value="NOT_IN">NOT IN
+          
+          <input type="text" id="searchDirector" placeholder="Director">
+          <input type="radio" id="directorIn" value="IN">IN
+          <input type="radio" id="directorIn" value="NOT_IN">NOT IN
+        </div>
+        <div class="col-md-2 text-center">
+          <input type="number" id="searchRelease" placeholder="Release Year">
+          
+          <select id="searchCountry"></select>
+          <input type="number" id="searchRuntime" placeholder="Runtime">
+        </div>         
+        <div class="col-md-2 text-center" id="ratingsHolder"></div>
+        <div class="col-md-4 text-center" id="genresHolder"></div>
+ 
+        <div class="col-md-2 text-center">
+        <input type="submit" class="btn btn-primary" id="movieSearch" value="Search">
+        </div>
+      <fieldset>
+    </form>
+  </div>
+    <script>
+    // export PHP vars
+    var genres = <?= $genresJSON ?>;
+  </script>
   <script src='handlers/tableHandler.js' type='text/javascript'></script>
+  <script src='handlers/movieViewHandler.js' type='text/javascript'></script>
 </body>
 
 </html>
