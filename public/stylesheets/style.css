@@ -86,7 +86,11 @@ thead {
 .ivt-section {
   font-size:25px;
   border-bottom-left-radius: 20px;
+  width: 10%;
+}
 
+.container .ivt-section {
+  width: 85%;
 }
 
 .ivt-section h1 {
@@ -120,6 +124,9 @@ thead {
 }
 
 /* ivt-name class */
+.ivt-name {
+  padding-right: -5em;
+}
 .ivt-name h1 {
   border-top-left-radius: 20px;
   text-align: center;
