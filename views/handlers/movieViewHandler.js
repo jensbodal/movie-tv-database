@@ -61,11 +61,12 @@ function search() {
         directorIn = directorIncluded[i].value;
       }
     }
-    queryString += '&director=' + director + '&directorIn=' + 'directorIn;
+    queryString += '&director=' + director + '&directorIn=' + directorIn;
     
-    var release = document.getElementById('searchRelease').value;  
+    var year = document.getElementById('searchRelease').value;  
     var country = document.getElementById('searchCountry').value;
-    queryString += '&release=' + release + '&country=' + country;
+    var runtime = document.getElementById('searchRuntime').value;
+    queryString += '&year=' + year + '&country=' + country + '&runtime=' + runtime;
     
     var allGenres = document.getElementsByName('searchGenres');
     var genres = "";
@@ -83,7 +84,7 @@ function search() {
         ratings += allRatings[i].value + ",";
       }
     } 
-    var queryString += '&ratings=' + ratings;
+    queryString += '&ratings=' + ratings;
     window.location = queryString;
 
     event.preventDefault();
