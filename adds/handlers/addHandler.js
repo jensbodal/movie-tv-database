@@ -1,13 +1,17 @@
-createReviewList();
+createMediaList();
 createGenreList();
 createCountryList();
+createTVShowList();
 
 
 // titles exported from PHP
-function createReviewList() {
-  var options = $('#review_list');  
+function createMediaList() {
+  var reviewOptions = $('#review_list'); 
+  var personMediaOptions = $('#media_list');
+  personMediaOptions.append($("<option />").val("").text(""));
   $.each(titles, function() {
-    options.append($("<option />").val(this.title).text(this.title));
+    reviewOptions.append($("<option />").val(this.title).text(this.title));
+    personMediaOptions.append($("<option />").val(this.media_id).text(this.title));
   });
 }
 
@@ -34,3 +38,10 @@ function createCountryList() {
   });
 }
 
+function createTVShowList() {
+  var epOptions = $('#tvshow_list');  
+  $.each(tvshow_titles, function() {
+    epOptions.append($("<option />").val(this.title).text(this.title));
+  });
+}
+    

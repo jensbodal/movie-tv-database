@@ -1,22 +1,22 @@
 <?php
 
-$title = "Add Site";
-include '../includes/header.php';
-include '../classes/MovieActorDBO.php';
+  $title = "Add Site";
+  include '../includes/header.php';
+  include '../classes/MovieActorDBO.php';
 
-// turn on errors
-ini_set('display_errors', 'On');
-
-
-$DBO = new MovieActorDB();
-
-$result = $DBO->query("INSERT INTO site (name, site_url, max_rating) VALUES ('".$_GET['site_name']."', '".$_GET['url']."', '".$_GET['max']."')");
+  // turn on errors
+  ini_set('display_errors', 'On');
 
 
-if (!$result) {
-  die('Could not query:' . mysql_error());
-}
+  $DBO = new MovieActorDB();
 
-echo mysql_result($result, 2);
+  $result = $DBO->query("INSERT INTO site (name, site_url, max_rating) VALUES ('".$_GET['site_name']."', '".$_GET['url']."', '".$_GET['max']."')");
+
+
+  if (!$result) {
+    die('Could not query:' . mysql_error());
+  }
+
+  echo mysql_result($result, 2);
 
 ?>

@@ -18,8 +18,9 @@ else {
 $DBO = new MovieActorDB();
 
 $query = '
-  DELETE '.$type.'_genre.*, media_actor.*, media_director.*, rating.* FROM '.$type.'_genre
+  DELETE '.$type.'_genre.*, '.$type.'_episode.*, media_actor.*, media_director.*, rating.* FROM '.$type.'_genre
       LEFT JOIN '.$type.' ON '.$type.'.id = '.$type.'_genre.'.$type.'_id
+      LEFT JOIN '.$type.'_episode ON '.$type.'_episode.'.$type.'_id = '.$type.'.id
       INNER JOIN media ON media.id = '.$type.'.media_id
       LEFT JOIN media_actor ON media_actor.media_id = media.id
       LEFT JOIN media_director ON media_director.media_id = media.id

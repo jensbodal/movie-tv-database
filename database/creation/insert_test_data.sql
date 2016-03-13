@@ -254,7 +254,7 @@ INSERT INTO person(first_name, last_name, birthdate) VALUES
   ("Peter", "Capaldi", "1958-04-14"),
   ("David", "Thewlis", "1963-03-20"),
   ("Benedict", "Cumberbatch", "1976-07-19"),
-  ("Daniel", "Brühl", "1978-06-16"),
+  ("Daniel", "Bruhl", "1978-06-16"),
   ("Alicia", "Vikander", "1988-10-03"),
   ("Bill", "Condon", "1955-10-22"),
   ("Marc", "Forster", "1969-11-30"),
