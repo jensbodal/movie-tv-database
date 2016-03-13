@@ -43,7 +43,8 @@ function createGenreList() {
 function search() {
   
   document.getElementById('movieSearch').addEventListener('click', function(event) {
-    var actor = document.getElementById('searchActor').value;
+    var actorFirst = document.getElementById('searchActorFirst').value;
+    var actorLast = document.getElementById('searchActorLast').value;
     var actorIncluded = document.getElementById('actorIn');
     var actorIn;
     for (var i = 0; i < actorIncluded.length; i++) {
@@ -51,9 +52,10 @@ function search() {
         actorIn = actorIncluded[i].value;
       }
     }
-    var queryString = '?actor=' + actor + '&actorIn=' + actorIn;
+    var queryString = '?actorFirst=' + actorFirst + '&actorLast=' + actorLast + '&actorIn=' + actorIn;
     
-    var director = document.getElementById('searchDirector').value;
+    var directorFirst = document.getElementById('searchDirectorFirst').value;
+    var directorLast = document.getElementById('searchDirectorLast').value;
     var directorIncluded = document.getElementById('directorIn');
     var directorIn;
     for (var i = 0; i < directorIncluded.length; i++) {
@@ -61,7 +63,7 @@ function search() {
         directorIn = directorIncluded[i].value;
       }
     }
-    queryString += '&director=' + director + '&directorIn=' + directorIn;
+    queryString += '&directorFirst=' + directorFirst + '&directorLast=' + directorLast + '&directorIn=' + directorIn;
     
     var year = document.getElementById('searchRelease').value;  
     var country = document.getElementById('searchCountry').value;

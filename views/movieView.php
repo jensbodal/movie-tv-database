@@ -22,17 +22,30 @@
                                   LEFT JOIN media ON media.id = movie.media_id ";
     $queryString = $startString;
     
-    if ($_GET['director']) {    
+    if ($_GET['directorFirst'] || $_GET['directorLast']) {    
       $directorString = "INNER JOIN (SELECT media.id FROM media
                                 LEFT JOIN media_director ON media_director.media_id = media.id
                                 LEFT JOIN director on director.id = media_director.director_id
-                                LEFT JOIN person on person.id = director.person_id
-                                WHERE first_name = 'Ben' AND last_name = 'Stiller'
-                    ) d_reqs ON d_reqs.id = media.id ";  
+                                LEFT JOIN person on person.id = director.person_id 
+                                WHERE ";
+      if ($_GET['directorFirst']) {
+        $directorFirst = "first_name = '".$_GET['directorFirst']."' ";
+        $directorString .= $directorFirst;
+      }
+      if ($_GET['directorLast']) {
+        $directorLast = "last_name = '".$_GET['directorLast']."' ";
+        if (!strcmp(substr($directorString, -6), "WHERE ")) {
+          $directorString .= $directorLast;
+        }
+        else {
+          $directorString .= "AND " . $directorLast;
+        }
+      }
+      $directorString .= ") d_reqs ON d_reqs.id = media.id ";   
       $queryString .= $directorString;
     }
     
-    if ($_GET['actor']) {
+    if ($_GET['actorFirst'] || $_GET['actorLast']) {
       $actorString = "INNER JOIN (SELECT media.id FROM media
                                   LEFT JOIN media_actor ON media_actor.media_id = media.id
                                   LEFT JOIN actor ON actor.id = media_actor.actor_id  
@@ -131,11 +144,13 @@
     <form>
       <fieldset>
         <div class="col-md-2 text-center">
-          <input type="text" id="searchActor" placeholder="Actor">
+          <input type="text" id="searchActorFirst" placeholder="Actor">
+          <input type="text" id="searchActorLast" placeholder="Actor">
           <input type="radio" id="actorIn" value="IN">IN
           <input type="radio" id="actorIn" value="NOT_IN">NOT IN
           
-          <input type="text" id="searchDirector" placeholder="Director">
+          <input type="text" id="searchDirectorFirst" placeholder="Director">
+          <input type="text" id="searchDirectorLast" placeholder="Actor">
           <input type="radio" id="directorIn" value="IN">IN
           <input type="radio" id="directorIn" value="NOT_IN">NOT IN
         </div>
