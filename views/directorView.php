@@ -29,7 +29,7 @@ $rows = $DBO->query("SELECT director.id AS director_id, first_name, last_name, b
 
     <?php if (count($rows) > 0): ?>
       <?php foreach($rows as $row): ?>
-        <tr id="directorItem-<?$row['director_id']?>">
+        <tr id="directorItem-<?=$row['director_id']?>">
           <td><?=$row['first_name']?></td>
           <td><?=$row['last_name']?></td>
           <td><?=$row['birthdate']?></td>

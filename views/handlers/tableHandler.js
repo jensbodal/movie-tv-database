@@ -74,13 +74,13 @@ function setRowClickHandler() {
       viewMovieItem($(this.id));
     }
     else {
-      deleteMovieItem($(this.id));
+      deleteItem($(this.id));
     }
   });
 }
 
-function viewMovieItem(movie) {
-  var separate = movie.selector.split('-');
+function viewMovieItem(item) {
+  var separate = item.selector.split('-');
   var page = 'subViews/'+separate[0]+'View.php';
   var id = separate[1];
 
@@ -91,8 +91,8 @@ function viewMovieItem(movie) {
   }
 }
 
-function deleteMovieItem(movie) {
-  var separate = movie.selector.split('-');
+function deleteItem(item) {
+  var separate = item.selector.split('-');
   var page = 'subViews/'+separate[0]+'Delete.php';
   var id = separate[1];
 
@@ -104,7 +104,7 @@ function deleteMovieItem(movie) {
       }
       else if (response.status == 'success') {
         console.log("SUCCESS");
-        var rowId = ('#'+movie.selector); 
+        var rowId = ('#'+item.selector); 
         $('#mainTable '+rowId).remove();
       }
       else {

@@ -1,6 +1,6 @@
 <?php
 if (empty($title)) {
-    $title = "Actor/Movie Database";
+    $title = "Movie/TV Show Database";
 }
 
 $root_dir = dirname(dirname(__FILE__));

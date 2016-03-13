@@ -1,6 +1,6 @@
 <?php
 if (empty($title)) {
-    $title = "Actor/Movie Database";
+    $title = "Movie/TV Show Database";
 }
 
 $root_dir = dirname(dirname(__FILE__));
@@ -14,7 +14,7 @@ $home_dir = $root_dir . '/';
 <nav class="navbar navbar-inverse navbar-static-top">
     <div class="container">
       <div class="navbar-header">
-        <a class="navbar-brand" href=<?=$home_dir?>>Movie/Actor DB</a>
+        <a class="navbar-brand" href=<?=$home_dir?>>Movie/TV Show DB</a>
       </div>
       <div id="navbar">
         <ul class="nav navbar-nav">
