@@ -1,6 +1,6 @@
 -- INSERT --    
 INSERT INTO tvshow_episode (tvshow_id, airdate, episode_title, runtime, episode_number, season) VALUES
-  ((SELECT id FROM tvshow WHERE title = [showTitleIn]), [dateIn], [epTitleIn], [runtimeIn], [numberIn], [seasonIn];
+  ((SELECT id FROM tvshow WHERE title = [showTitleIn]), [dateIn], [epTitleIn], [runtimeIn], [numberIn], [seasonIn]);
               
 START TRANSACTION;
 INSERT INTO media (id) VALUES (null);
@@ -9,7 +9,7 @@ INSERT INTO movie (title, media_id, release_date, release_country, runtime, cont
 COMMIT;
 
 INSERT INTO movie_genre (movie_id, genre_id) VALUES	
-  (SELECT id FROM movie WHERE title = [titleIn]),(SELECT id FROM genre WHERE genre_type = [genreIn]));
+  (SELECT id FROM movie WHERE title = [titleIn]),(SELECT id FROM genre WHERE genre_type = [genreIn]);
 
 INSERT INTO person(first_name, last_name, birthdate) VALUES ([firstNameIn], [lastNameIn], [birthdayIn]);
 
@@ -49,6 +49,7 @@ INSERT INTO tvshow_genre (tvshow_id, genre_id) VALUES
 INSERT INTO rating (media_id, site_id, rating, rating_url) VALUES
     ([mediaIn], (SELECT site.id FROM site WHERE (site.name = [nameIn])), [ratingIn], [urlIn]);
 
+INSERT INTO genre (genre_type) VALUES ([genreIn]);
     
 -- DELETE --
 

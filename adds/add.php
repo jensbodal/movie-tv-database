@@ -159,6 +159,15 @@
           <input type="submit" class="btn btn-primary" id="addReviewTitle">
         </fieldset>
       </form> 
+      
+      <form class="addForms form-inline">
+        <fieldset>
+          <legend>Add Genre</legend>
+          <label for="new_genre">Genre:</label>
+          <input type="text" name="newGenre" class="form-control" id="newGenre">
+          <input type="submit" class="btn btn-primary" id="addNewGenre">
+        </fieldset>
+      </form> 
 
   </div>
   <p id="result"><p>
