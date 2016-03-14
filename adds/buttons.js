@@ -13,7 +13,6 @@ function addPerson() {
     var last_name = document.getElementById('last_name').value;
     var birthday = document.getElementById('birthday').value;
     var media = document.getElementById('media_list').value;
-    console.log(media);
     var roles = document.getElementsByName('role');
     var role;
     for (var i = 0; i < roles.length; i++) {
