@@ -116,7 +116,22 @@ DELETE actor.*, director.* FROM tvshow
   WHERE tvshow.id = [idIn];
    
 -- SELECT --
-  
+SELECT COUNT(movie.id) AS info FROM movie
+UNION ALL
+SELECT COUNT(tvshow.id) FROM tvshow
+UNION ALL
+SELECT COUNT(tvshow_episode.id) FROM tvshow_episode
+UNION ALL
+SELECT COUNT(actor.id) FROM actor
+UNION ALL
+SELECT COUNT(director.id) FROM director
+UNION ALL
+SELECT COUNT(rating.id) FROM rating
+UNION ALL
+SELECT COUNT(site.id) FROM site
+UNION ALL
+SELECT COUNT(genre.id) FROM genre;
+   
 SELECT movie.title AS title, movie.media_id AS media_id FROM movie
 UNION ALL
 SELECT tvshow.title AS title, tvshow.media_id AS media_id  FROM tvshow
