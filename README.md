@@ -8,8 +8,14 @@
     cp .private/config-example.ini .private/config.ini
     chmod 700 .private/config.ini
 ```
-# Restore Database
-    mysql --user=[username] --password=[password] --host=oniddb.cws.oregonstate.edu -D [dbname] < all_db_backup.sql
 
-# Backup Database
-    mysqldump --compact --ad-drop-table --user=[username] --password=[password] --host=oniddb.cws.oregonstate.edu [dbname] | sed "/ SET /d" > all_db_backup.sql
+* Update the config.ini with your information
+
+# Drop/Create Database
+    Navigate to databases/creation
+    mysql --user=[username] --password=[password] --host=oniddb.cws.oregonstate.edu -D [dbname] < drop_create_tables.sql
+
+# Insert test data
+    Navigate to database/creation
+    mysql --user=[username] --password=[password] --host=oniddb.cws.oregonstate.edu -D [dbname] < insert_test_data.sql
+
